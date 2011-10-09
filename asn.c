@@ -31,7 +31,7 @@ int ASN (char *DOMBUFFER, char *ASNDETAILS, char *DOM)
   char *org;
 	int generate = 0;
 
-	gi = GeoIP_open("/usr/local/share/GeoIP/GeoIPASNum.dat", GEOIP_STANDARD);
+	gi = GeoIP_open("GeoIPASNum.dat", GEOIP_STANDARD);
 
 	if (gi == NULL)
 	 {
