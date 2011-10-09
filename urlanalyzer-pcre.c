@@ -20,7 +20,8 @@
 #define ASNLIST "asn.conf"
 #define OVECCOUNT (uint32_t) 30
 #define MD5MAX (uint32_t) 32
-#define MAX_MATCH	(uint32_t) 128  
+#define MAX_MATCH	(uint32_t) 128
+#define SUCCESS (uint32_t) 0  
 
 struct server_headers
 {
@@ -154,16 +155,23 @@ int whitelist(char *_domain)
 	
 int main(int argc, char *argv[])
 {
-		char asnver[MD5MAX];
+		char asnver[MD5MAX], wlistver[MD5MAX];
 		memset(asnver, 0, sizeof(asnver));
+		memset(wlistver, 0, sizeof(wlistver));
 		
 		if(argc != 2)
-			{
-				// get ASN packver //
-				md5sum(asnver, ASNLIST);
-				printf("%s 0.6 <domain/url> (PCRE engine)(Flux module)\n\tASN ver::%s", argv[0], asnver);
-				exit(0);
-			}
+    	{
+      	printf("domain analyzer: usage:%s domain/ip\n", argv[0]);
+      	// get ASN && WLIST versions //
+      	if((md5sum(asnver, ASNLIST)) == SUCCESS)
+      			printf("ASN Ver::%s\n", asnver);
+  
+      	if((md5sum(wlistver, KNOWN)) == SUCCESS)
+      		printf("WLIST Ver::%s\n", wlistver);
+      		
+      	exit(0);
+      }
+
 		 
 		// check if domain is alive //
 		struct hostent *server;
