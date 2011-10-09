@@ -1,13 +1,13 @@
 Domain Analyzer tries to detect malicious domain by the following methods:
 
 1)it extract the ASN from the supplied domain name or ip address
-2)it verify the domain is not part of the black ASN list
-3)it verify if the domain is registered in alexa
-4)it verify the landing page is not default installation/or what eve it configured.
+2)it verify the domain is not part of the black ASN list 
+3)it verify if the domain is registered in any white lists you choose ....
+4)it verify the landing page is not default installation/or what ever it configured.
 
 Building
 --------
-gcc  -o urlanalyzer urlanalyzer-pcre.c asn.c getaddrinfo.c -lcurl -lGeoIP -lpcre
+gcc  -o domainanalyzer urlanalyzer-pcre.c asn.c getaddrinfo.c -lcurl -lGeoIP -lpcre
 
 works on OSX, Linux.
 
