@@ -19,6 +19,7 @@
 #define KNOWN "wlist.conf"
 #define ASNLIST "asn.conf"
 #define OVECCOUNT (uint32_t) 30
+#define MD5MAX (uint32_t) 32
 #define MAX_MATCH	(uint32_t) 128  
 
 struct server_headers
@@ -153,10 +154,14 @@ int whitelist(char *_domain)
 	
 int main(int argc, char *argv[])
 {
+		char asnver[MD5MAX];
+		memset(asnver, 0, sizeof(asnver));
 		
 		if(argc != 2)
 			{
-				printf("%s 0.6 <domain/url> (PCRE engine)(Flux module)\n\tASN ver::94d9682f457cbd28f2879143097c5c92\n", argv[0]);
+				// get ASN packver //
+				md5sum(asnver, ASNLIST);
+				printf("%s 0.6 <domain/url> (PCRE engine)(Flux module)\n\tASN ver::%s", argv[0], asnver);
 				exit(0);
 			}
 		 
