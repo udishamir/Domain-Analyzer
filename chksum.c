@@ -8,7 +8,7 @@
 #include <sys/stat.h>
 #include <openssl/md5.h>
 
-#include "mod_update.h"
+#include "analyzer.h"
 
 unsigned char result[MD5_DIGEST_LENGTH];
 
