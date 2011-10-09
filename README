@@ -1,9 +1,6 @@
 Domain Analyzer tries to detect malicious domain by the following methods:
 
-1)it extract the ASN from the supplied domain name or ip address
-2)it verify the domain is not part of the black ASN list 
-3)it verify if the domain is registered in any white lists you choose ....
-4)it verify the landing page is not default installation/or what ever it configured.
+it does what you tell him to do.
 
 Building
 --------
