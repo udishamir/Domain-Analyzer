@@ -4,7 +4,7 @@ it does what you tell him to do.
 
 Building
 --------
-gcc  -o domainanalyzer urlanalyzer-pcre.c asn.c getaddrinfo.c -lcurl -lGeoIP -lpcre -lssl
+gcc  -o domainanalyzer urlanalyzer-pcre.c asn.c getaddrinfo.c chksum.c  -lcurl -lGeoIP -lpcre -lssl
 
 works on OSX, Linux.
 
