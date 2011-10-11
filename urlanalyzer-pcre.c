@@ -10,7 +10,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
-#include </usr/local/include/pcre.h> 
+#include <pcre.h> 
 
 #include "asn.h"
 
