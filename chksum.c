@@ -43,7 +43,6 @@ int md5sum(char *hashsum, char *fname)
     int file_descript;
     unsigned long file_size;
     char* file_buffer;
-    unsigned char asciisum[32];
 
     file_descript = open(fname, O_RDONLY);
     if(file_descript < 0) 
