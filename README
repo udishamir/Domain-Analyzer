@@ -6,9 +6,10 @@ many thanks to Anton. Z (wmsecurity@gmail.com).
 
 Building
 --------
-gcc  -o domainanalyzer urlanalyzer-pcre.c asn.c getaddrinfo.c chksum.c  -lcurl -lGeoIP -lpcre -lssl -lcrypto
 
-works on OSX, Linux.
+make
+
+compiled on OSX, Linux.
 
 Windows
 -------
