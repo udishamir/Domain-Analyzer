@@ -181,7 +181,7 @@ int main(int argc, char *argv[])
 		
 		if(argc != 2)
     	{
-      	printf("domainanalyzer Copyright (C) 2011 Udi Shamir This program comes with ABSOLUTELY NO WARRANTY;\nusage:%s domain/ip\n", argv[0]);
+      	printf("domainanalyzer Copyright (C) 2011 Udi Shamir, This program comes with ABSOLUTELY NO WARRANTY;\nusage:%s domain/ip\n", argv[0]);
       	
       	// get ASN && WLIST versions //
       	if((md5sum(asnver, ASNLIST)) == SUCCESS)
