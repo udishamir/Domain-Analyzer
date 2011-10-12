@@ -57,7 +57,7 @@ struct httpbody_structure
 };
 
 // search suspicious patterns //
-int find_sets(char *respond_body, char *pattern)
+int find_sets(char *respond_body, char *pattern, char *suspicious_pattern)
 {
 	//printf(":::::::::%s:::::::::::\n", pattern);
 	pcre *re;
@@ -77,6 +77,8 @@ int find_sets(char *respond_body, char *pattern)
 		rc = pcre_exec(re, NULL, respond_body, strlen(respond_body), 0, 0, ovector, OVECCOUNT);
 		if(rc == 1)
 			{
+				if(suspicious_pattern != NULL)
+					printf("match:%s\n", suspicious_pattern);
 				return 0;
 			}
 		
@@ -128,7 +130,7 @@ int asnlist(char *_asn)
 				snprintf(regexp_format, sizeof(regexp_format), "\\b%s\\b", _asn);
 				while((fgets(buffer, sizeof(buffer), fp)) != NULL)
 				{	
-					if((ismatch=find_sets(buffer, regexp_format)) == 0)
+					if((ismatch=find_sets(buffer, regexp_format, NULL)) == 0)
 						{
 							return 0;
 						}
@@ -161,7 +163,7 @@ int whitelist(char *_domain)
 				memset(buffer, 0, sizeof(buffer));	
 				while((fgets(buffer, sizeof(buffer), fp)) != NULL)
 				{	
-					if((ismatch=find_sets(buffer, _domain)) == 0)
+					if((ismatch=find_sets(buffer, _domain, NULL)) == 0)
 						{
 							return 0;
 						}
@@ -351,7 +353,7 @@ int main(int argc, char *argv[])
     			filebuffer[strlen(filebuffer)-1]='\0';
     			snprintf(regexp_format, sizeof(regexp_format), "\\b%s\\b", filebuffer);
     			// send patterns //
-    			if((sets_res=find_sets(data.bodydata, regexp_format)) == 0)
+    			if((sets_res=find_sets(data.bodydata, regexp_format, filebuffer)) == 0)
     				{
     					printf("%s\n", url);
     					return 0;
