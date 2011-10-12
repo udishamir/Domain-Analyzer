@@ -26,9 +26,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "analyzer.h"
 
-unsigned char result[MD5_DIGEST_LENGTH];
+char result[MD5_DIGEST_LENGTH];
 
-int hex2char(unsigned char *data, size_t len, unsigned char *buf)
+int hex2char(char *data, size_t len, char *buf)
 {
    char *p;
    int i;
