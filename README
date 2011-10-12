@@ -2,6 +2,8 @@ Domain Analyzer tries to detect malicious domain by the following methods:
 
 it does what you tell him to do.
 
+many thanks to Anton. Z (wmsecurity@gmail.com).
+
 Building
 --------
 gcc  -o domainanalyzer urlanalyzer-pcre.c asn.c getaddrinfo.c chksum.c  -lcurl -lGeoIP -lpcre -lssl -lcrypto
@@ -11,3 +13,6 @@ works on OSX, Linux.
 Windows
 -------
 coming soon.......
+
+
+udishamir@gmail.com

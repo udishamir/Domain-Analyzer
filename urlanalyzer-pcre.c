@@ -39,7 +39,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define OVECCOUNT (uint32_t) 30
 #define MD5MAX (uint32_t) 32
 #define MAX_MATCH	(uint32_t) 128
-#define SUCCESS (uint32_t) 0  
+#define SUCCESS (uint32_t) 0
+#define FAILD -1  
 
 struct server_headers
 {
@@ -71,7 +72,7 @@ int find_sets(char *respond_body, char *pattern, char *suspicious_pattern)
 		{	
 			fprintf(stderr, 
 				"PCRE compilation failed at expression offset %d: %s\n", erroffset, error); 
-			return -1;
+			return FAILD;
 		}
 		
 		rc = pcre_exec(re, NULL, respond_body, strlen(respond_body), 0, 0, ovector, OVECCOUNT);
@@ -122,7 +123,7 @@ int asnlist(char *_asn)
 				if((fp=fopen(ASNLIST, "r")) == NULL)
 					{
 						pclose(fp);
-						return -1;
+						return FAILD;
 					}
 				
 				memset(buffer, 0, sizeof(buffer));	
@@ -148,7 +149,7 @@ int whitelist(char *_domain)
 				char buffer[4096];
 				struct stat fstat;
 				
-				if((stat(KNOWN, &fstat)) == -1)
+				if((stat(KNOWN, &fstat)) == FAILD)
 					{
 						printf("wlist.conf does not exist giving up on white listings\n");
 						return 2;
@@ -201,7 +202,7 @@ int main(int argc, char *argv[])
     if (server == NULL)
     	{
         printf("no such host\n");
-        exit(-1);
+        exit(FAILD);
     	}
 
 		int restatus=0;
@@ -226,7 +227,7 @@ int main(int argc, char *argv[])
 			}
 			
 		// calling ASN RESOLVER //
-		if((restatus=ASN(ASNBUFFER, ASNDETAILS, argv[1])) == -1)
+		if((restatus=ASN(ASNBUFFER, ASNDETAILS, argv[1])) == FAILD)
 			{
 				printf("ASN resolver faild");
 			}
@@ -300,7 +301,7 @@ int main(int argc, char *argv[])
         curl_easy_getinfo(handle, CURLINFO_CONTENT_LENGTH_DOWNLOAD, &server_t.clen);
         curl_easy_getinfo(handle, CURLINFO_CONTENT_TYPE, &server_t.ctype);
         
-        if(server_t.clen == -1)
+        if(server_t.clen == FAILD)
         	{
         		printf("Server Content-Length: Oops faild\n");
         	}
@@ -336,7 +337,7 @@ int main(int argc, char *argv[])
     else 
     	{
         printf("Error getting CURL handle\n");
-        exit(-1);
+        exit(FAILD);
     	}
 
     if (data.len > 0)
@@ -344,13 +345,13 @@ int main(int argc, char *argv[])
     		if((fp=fopen(DEFILE, "r")) == NULL)
     			{
     				perror("open def.conf");
-    				exit(-1);
+    				exit(FAILD);
     			}
     		
     		memset(filebuffer, 0, sizeof(filebuffer));
     		while((fgets(filebuffer, sizeof(filebuffer), fp)) != NULL)
     		{
-    			filebuffer[strlen(filebuffer)-1]='\0';
+    			filebuffer[strlen(filebuffer)FAILD]='\0';
     			snprintf(regexp_format, sizeof(regexp_format), "\\b%s\\b", filebuffer);
     			// send patterns //
     			if((sets_res=find_sets(data.bodydata, regexp_format, filebuffer)) == 0)
@@ -358,10 +359,10 @@ int main(int argc, char *argv[])
     					printf("%s\n", url);
     					return 0;
     				}
-    			else if(res == -1)
+    			else if(res == FAILD)
     			{
     				printf("faild, cannot compile pattern\n");
-    				exit(-1);
+    				exit(FAILD);
     			}
     			memset(regexp_format, 0, sizeof(regexp_format));
     		}
