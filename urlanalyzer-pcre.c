@@ -116,7 +116,7 @@ int asnlist(char *_asn)
 				
 				if((stat(ASNLIST, &fstat)) == -1)
 					{
-						printf("asn.conf does not exist giving up on asn black listings\n");
+						printf("asn.conf file does not exist, giving up on asn black listings\n");
 						return 2;
 					}
 				
@@ -151,7 +151,7 @@ int whitelist(char *_domain)
 				
 				if((stat(KNOWN, &fstat)) == FAILD)
 					{
-						printf("wlist.conf does not exist giving up on white listings\n");
+						printf("wlist.conf file does not exist, giving up on white listings\n");
 						return 2;
 					}
 				
@@ -201,7 +201,7 @@ int main(int argc, char *argv[])
 		server = gethostbyname(argv[1]);
     if (server == NULL)
     	{
-        printf("no such host\n");
+        printf("Resolving error, no such host\n");
         exit(FAILD);
     	}
 
@@ -218,29 +218,29 @@ int main(int argc, char *argv[])
 		// verify white lists first //
 		if((restatus=whitelist(argv[1])) == 0)
 			{
-				printf("domain is clean\n");
+				printf("Domain does not seem to be black\n");
 				exit(0);
 			}
 		else
 			{
-				printf("--\ndomain not detected in white list..\n");
+				printf("--\nThis domain is detected in white list..\n");
 			}
 			
 		// calling ASN RESOLVER //
 		if((restatus=ASN(ASNBUFFER, ASNDETAILS, argv[1])) == FAILD)
 			{
-				printf("ASN resolver faild");
+				printf("ASN resolver failed");
 			}
 		
 		printf("--\nAsn:%s %s\n", ASNBUFFER, ASNDETAILS);
 		if((GeoIP_country_code_by_name(gi, argv[1])) == NULL)
 			{
-				printf("Oops, faild to retrieve\n");
+				printf("Oops, failed to retrieve AS number\n");
 				//return 1;
 			}
 		else
 			{
-				printf("Country:%s\n", GeoIP_country_code_by_name(gi, argv[1]));
+				printf("Country: %s\n", GeoIP_country_code_by_name(gi, argv[1]));
 			}
 		
 		// verify black asn lists first //
@@ -303,11 +303,11 @@ int main(int argc, char *argv[])
         
         if(server_t.clen == FAILD)
         	{
-        		printf("Server Content-Length: Oops faild\n");
+        		printf("Server Content-Length: Oops failed\n");
         	}
         else
         	{
-        		printf("Server Content-Length:%G\n", server_t.clen);
+        		printf("Server Content-Length: %G\n", server_t.clen);
         	}
         
         if(server_t.ctype == NULL)
@@ -361,12 +361,12 @@ int main(int argc, char *argv[])
     				}
     			else if(res == FAILD)
     			{
-    				printf("faild, cannot compile pattern\n");
+    				printf("failed, cannot compile pattern\n");
     				exit(FAILD);
     			}
     			memset(regexp_format, 0, sizeof(regexp_format));
     		}
-    		printf("not in our body list\n");
+    		printf("The received body is not in our black body list\n");
     	} 
     	else
     	 {
