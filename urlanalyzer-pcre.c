@@ -80,7 +80,7 @@ int find_sets(char *respond_body, char *pattern, char *suspicious_pattern)
 			{
 				if(suspicious_pattern != NULL)
 					printf("match:%s\n", suspicious_pattern);
-				return 0;
+				return SUCCESS;
 			}
 		
 	return 1;
@@ -114,7 +114,7 @@ int asnlist(char *_asn)
 				
 				struct stat fstat;
 				
-				if((stat(ASNLIST, &fstat)) == -1)
+				if((stat(ASNLIST, &fstat)) == FAILD)
 					{
 						printf("asn.conf file does not exist, giving up on asn black listings\n");
 						return 2;
@@ -131,9 +131,9 @@ int asnlist(char *_asn)
 				snprintf(regexp_format, sizeof(regexp_format), "\\b%s\\b", _asn);
 				while((fgets(buffer, sizeof(buffer), fp)) != NULL)
 				{	
-					if((ismatch=find_sets(buffer, regexp_format, NULL)) == 0)
+					if((ismatch=find_sets(buffer, regexp_format, NULL)) == SUCCESS)
 						{
-							return 0;
+							return SUCCESS;
 						}
  				}
  	pclose(fp);
@@ -158,15 +158,15 @@ int whitelist(char *_domain)
 				if((fp=fopen(KNOWN, "r")) == NULL)
 					{
 						pclose(fp);
-						return -1;
+						return FAILD;
 					}
 				
 				memset(buffer, 0, sizeof(buffer));	
 				while((fgets(buffer, sizeof(buffer), fp)) != NULL)
 				{	
-					if((ismatch=find_sets(buffer, _domain, NULL)) == 0)
+					if((ismatch=find_sets(buffer, _domain, NULL)) == SUCCESS)
 						{
-							return 0;
+							return SUCCESS;
 						}
  				}
  	pclose(fp);
@@ -191,7 +191,7 @@ int main(int argc, char *argv[])
       	if((md5sum(wlistver, KNOWN)) == SUCCESS)
       		printf("WLIST Ver::%s\n", wlistver);
       		
-      	exit(0);
+      	exit(SUCCESS);
       }
 
 		 
@@ -216,14 +216,14 @@ int main(int argc, char *argv[])
 		memset(ASNDETAILS, 0, sizeof(ASNDETAILS));
 		
 		// verify white lists first //
-		if((restatus=whitelist(argv[1])) == 0)
+		if((restatus=whitelist(argv[1])) == SUCCESS)
 			{
 				printf("Domain does not seem to be black\n");
-				exit(0);
+				exit(SUCCESS);
 			}
 		else
 			{
-				printf("--\nThis domain is detected in white list..\n");
+				printf("--\nThis domain is not detected in white list..\n");
 			}
 			
 		// calling ASN RESOLVER //
@@ -244,10 +244,10 @@ int main(int argc, char *argv[])
 			}
 		
 		// verify black asn lists first //
-		if((restatus=asnlist(ASNBUFFER)) == 0)
+		if((restatus=asnlist(ASNBUFFER)) == SUCCESS)
 			{
 				printf("* ASN in black list ... *\n");
-				exit(0);
+				exit(SUCCESS);
 			}
 		else
 			{
@@ -354,10 +354,10 @@ int main(int argc, char *argv[])
     			filebuffer[strlen(filebuffer)FAILD]='\0';
     			snprintf(regexp_format, sizeof(regexp_format), "\\b%s\\b", filebuffer);
     			// send patterns //
-    			if((sets_res=find_sets(data.bodydata, regexp_format, filebuffer)) == 0)
+    			if((sets_res=find_sets(data.bodydata, regexp_format, filebuffer)) == SUCCESS)
     				{
     					printf("%s\n", url);
-    					return 0;
+    					return SUCCESS;
     				}
     			else if(res == FAILD)
     			{
@@ -374,5 +374,5 @@ int main(int argc, char *argv[])
     	 }
     	 
     free(data.bodydata);
-    return 0;
+    return SUCCESS;
 }

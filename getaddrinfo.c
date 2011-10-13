@@ -24,6 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdint.h>
 #include <GeoIP.h>
 
+#define SUCCESS (uint32_t) 0
+#define FAILD -1  
+
 
 static inline int lookup_host (const char *host)
 {
@@ -42,10 +45,10 @@ static inline int lookup_host (const char *host)
   hints.ai_flags |= AI_CANONNAME;
 
   errcode = getaddrinfo (host, NULL, &hints, &res);
-  if (errcode != 0)
+  if (errcode != SUCCESS)
     {
       perror ("getaddrinfo");
-      return -1;
+      return FAILD;
     }
 
   printf ("Flux INFO\n");
@@ -69,6 +72,7 @@ static inline int lookup_host (const char *host)
       if((GeoIP_country_code_by_name(gi, addrstr)) == NULL)
       	{
       		printf("%s\n", addrstr);
+      		return SUCCESS;
       	}
       else
       	{
@@ -80,7 +84,7 @@ static inline int lookup_host (const char *host)
       isflux=isflux++;
     }
 	printf("--\n");
-  return 0;
+  return SUCCESS;
 }
 
 int getaddr (char *dom)
