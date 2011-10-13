@@ -26,6 +26,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "analyzer.h"
 
+#define SUCCESS (uint32_t) 0
+#define FAILD -1 
+
 char result[MD5_DIGEST_LENGTH];
 
 int hex2char(char *data, size_t len, char *buf)
@@ -44,7 +47,7 @@ int hex2char(char *data, size_t len, char *buf)
    
    *p = 0;
    
-   return 0;
+   return SUCCESS;
 }
 
 // Get the size of the file by its file descriptor
@@ -62,7 +65,7 @@ int md5sum(char *hashsum, char *fname)
 
     file_descript = open(fname, O_RDONLY);
     if(file_descript < 0) 
-    	return -1;
+    	return FAILD;
     	
     file_size = get_size_by_fd(file_descript);
 
@@ -72,5 +75,5 @@ int md5sum(char *hashsum, char *fname)
 		// translate binary to ascii //
     hex2char(result, 16, hashsum);
     
-    return 0;
+    return SUCCESS;
 }

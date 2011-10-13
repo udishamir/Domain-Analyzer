@@ -16,6 +16,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <GeoIP.h>
 
+#define SUCCESS (uint32_t) 0
+#define FAILD -1 
+
 int ASN (char *DOMBUFFER, char *ASNDETAILS, char *DOM) 
 {
 	GeoIP *gi;
@@ -26,7 +29,7 @@ int ASN (char *DOMBUFFER, char *ASNDETAILS, char *DOM)
 	if (gi == NULL)
 	 {
 		printf("Error opening database\n");
-		return -1;
+		return FAILD;
 	 }
 
 	org = GeoIP_org_by_name (gi, (const char *)DOM);
@@ -37,5 +40,5 @@ int ASN (char *DOMBUFFER, char *ASNDETAILS, char *DOM)
 
 	GeoIP_delete(gi);
 
-	return 0;
+	return SUCCESS;
 }
