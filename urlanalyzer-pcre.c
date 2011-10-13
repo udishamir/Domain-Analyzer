@@ -218,7 +218,7 @@ int main(int argc, char *argv[])
 		// verify white lists first //
 		if((restatus=whitelist(argv[1])) == SUCCESS)
 			{
-				printf("Domain does not seem to be black\n");
+				printf("Domain does not seems to be black\n");
 				exit(SUCCESS);
 			}
 		else
@@ -235,7 +235,7 @@ int main(int argc, char *argv[])
 		printf("--\nAsn:%s %s\n", ASNBUFFER, ASNDETAILS);
 		if((GeoIP_country_code_by_name(gi, argv[1])) == NULL)
 			{
-				printf("Oops, failed to retrieve AS number\n");
+				printf("Oops, failed to retrieve Country :(\n");
 				//return 1;
 			}
 		else
