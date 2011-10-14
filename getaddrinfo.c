@@ -81,7 +81,7 @@ static inline int lookup_host (const char *host)
       			printf("\nMight be flux domain ...... *\n");
       	}
       res = res->ai_next;
-      isflux=isflux++;
+      isflux++;
     }
 	printf("--\n");
   return SUCCESS;

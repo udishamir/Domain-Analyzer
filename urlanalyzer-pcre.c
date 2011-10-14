@@ -331,7 +331,7 @@ int main(int argc, char *argv[])
   						}
   				}
   				
-        printf("connection status: %s\n", curl_easy_strerror(res));
+        printf("connection status: %s, perhaps offline ?\n", curl_easy_strerror(res));
         curl_easy_cleanup(handle);
     	}
     else 
