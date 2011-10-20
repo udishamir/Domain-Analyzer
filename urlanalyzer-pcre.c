@@ -1,18 +1,3 @@
-/* domainanalyzer, by udi shamir
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -28,9 +13,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include </usr/local/include/pcre.h> 
 
 #include "asn.h"
-#include "analyzer.h"
-#include "chksum.h"
-#include "getaddrinfo.h"
 
 
 #define DEFILE "def.conf"
@@ -39,8 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define OVECCOUNT (uint32_t) 30
 #define MD5MAX (uint32_t) 32
 #define MAX_MATCH	(uint32_t) 128
-#define SUCCESS (uint32_t) 0
-#define FAILD -1  
+#define SUCCESS (uint32_t) 0  
 
 struct server_headers
 {
@@ -58,7 +39,7 @@ struct httpbody_structure
 };
 
 // search suspicious patterns //
-int find_sets(char *respond_body, char *pattern, char *suspicious_pattern)
+int find_sets(char *respond_body, char *pattern)
 {
 	//printf(":::::::::%s:::::::::::\n", pattern);
 	pcre *re;
@@ -72,15 +53,13 @@ int find_sets(char *respond_body, char *pattern, char *suspicious_pattern)
 		{	
 			fprintf(stderr, 
 				"PCRE compilation failed at expression offset %d: %s\n", erroffset, error); 
-			return FAILD;
+			return -1;
 		}
 		
 		rc = pcre_exec(re, NULL, respond_body, strlen(respond_body), 0, 0, ovector, OVECCOUNT);
 		if(rc == 1)
 			{
-				if(suspicious_pattern != NULL)
-					printf("match:%s\n", suspicious_pattern);
-				return SUCCESS;
+				return 0;
 			}
 		
 	return 1;
@@ -114,16 +93,16 @@ int asnlist(char *_asn)
 				
 				struct stat fstat;
 				
-				if((stat(ASNLIST, &fstat)) == FAILD)
+				if((stat(ASNLIST, &fstat)) == -1)
 					{
-						printf("asn.conf file does not exist, giving up on asn black listings\n");
+						printf("asn.conf does not exist giving up on asn black listings\n");
 						return 2;
 					}
 				
 				if((fp=fopen(ASNLIST, "r")) == NULL)
 					{
-						pclose(fp);
-						return FAILD;
+						fclose(fp);
+						return -1;
 					}
 				
 				memset(buffer, 0, sizeof(buffer));	
@@ -131,12 +110,12 @@ int asnlist(char *_asn)
 				snprintf(regexp_format, sizeof(regexp_format), "\\b%s\\b", _asn);
 				while((fgets(buffer, sizeof(buffer), fp)) != NULL)
 				{	
-					if((ismatch=find_sets(buffer, regexp_format, NULL)) == SUCCESS)
+					if((ismatch=find_sets(buffer, regexp_format)) == 0)
 						{
-							return SUCCESS;
+							return 0;
 						}
  				}
- 	pclose(fp);
+ 	fclose(fp);
  	
  	return 3;
 }
@@ -149,27 +128,27 @@ int whitelist(char *_domain)
 				char buffer[4096];
 				struct stat fstat;
 				
-				if((stat(KNOWN, &fstat)) == FAILD)
+				if((stat(KNOWN, &fstat)) == -1)
 					{
-						printf("wlist.conf file does not exist, giving up on white listings\n");
+						printf("wlist.conf does not exist giving up on white listings\n");
 						return 2;
 					}
 				
 				if((fp=fopen(KNOWN, "r")) == NULL)
 					{
-						pclose(fp);
-						return FAILD;
+						fclose(fp);
+						return -1;
 					}
 				
 				memset(buffer, 0, sizeof(buffer));	
 				while((fgets(buffer, sizeof(buffer), fp)) != NULL)
 				{	
-					if((ismatch=find_sets(buffer, _domain, NULL)) == SUCCESS)
+					if((ismatch=find_sets(buffer, _domain)) == 0)
 						{
-							return SUCCESS;
+							return 0;
 						}
  				}
- 	pclose(fp);
+ 	fclose(fp);
  	
  	return 3;
 }
@@ -182,8 +161,7 @@ int main(int argc, char *argv[])
 		
 		if(argc != 2)
     	{
-      	printf("domainanalyzer Copyright (C) 2011 Udi Shamir, This program comes with ABSOLUTELY NO WARRANTY;\nusage:%s domain/ip\n", argv[0]);
-      	
+      	printf("domain analyzer: usage:%s domain/ip\n", argv[0]);
       	// get ASN && WLIST versions //
       	if((md5sum(asnver, ASNLIST)) == SUCCESS)
       			printf("ASN Ver::%s\n", asnver);
@@ -191,7 +169,7 @@ int main(int argc, char *argv[])
       	if((md5sum(wlistver, KNOWN)) == SUCCESS)
       		printf("WLIST Ver::%s\n", wlistver);
       		
-      	exit(SUCCESS);
+      	exit(0);
       }
 
 		 
@@ -201,8 +179,8 @@ int main(int argc, char *argv[])
 		server = gethostbyname(argv[1]);
     if (server == NULL)
     	{
-        printf("Resolving error, no such host\n");
-        exit(FAILD);
+        printf("no such host\n");
+        exit(-1);
     	}
 
 		int restatus=0;
@@ -216,38 +194,38 @@ int main(int argc, char *argv[])
 		memset(ASNDETAILS, 0, sizeof(ASNDETAILS));
 		
 		// verify white lists first //
-		if((restatus=whitelist(argv[1])) == SUCCESS)
+		if((restatus=whitelist(argv[1])) == 0)
 			{
-				printf("Domain does not seems to be black\n");
-				exit(SUCCESS);
+				printf("domain is clean\n");
+				exit(0);
 			}
 		else
 			{
-				printf("--\nThis domain is not detected in white list..\n");
+				printf("--\ndomain not detected in white list..\n");
 			}
 			
 		// calling ASN RESOLVER //
-		if((restatus=ASN(ASNBUFFER, ASNDETAILS, argv[1])) == FAILD)
+		if((restatus=ASN(ASNBUFFER, ASNDETAILS, argv[1])) == -1)
 			{
-				printf("ASN resolver failed");
+				printf("ASN resolver faild");
 			}
 		
 		printf("--\nAsn:%s %s\n", ASNBUFFER, ASNDETAILS);
 		if((GeoIP_country_code_by_name(gi, argv[1])) == NULL)
 			{
-				printf("Oops, failed to retrieve Country :(\n");
+				printf("Oops, faild to retrieve\n");
 				//return 1;
 			}
 		else
 			{
-				printf("Country: %s\n", GeoIP_country_code_by_name(gi, argv[1]));
+				printf("Country:%s\n", GeoIP_country_code_by_name(gi, argv[1]));
 			}
 		
 		// verify black asn lists first //
-		if((restatus=asnlist(ASNBUFFER)) == SUCCESS)
+		if((restatus=asnlist(ASNBUFFER)) == 0)
 			{
 				printf("* ASN in black list ... *\n");
-				exit(SUCCESS);
+				exit(0);
 			}
 		else
 			{
@@ -256,7 +234,7 @@ int main(int argc, char *argv[])
 		// flux //	
 		getaddr(argv[1]);
 		
-    CURL *handle;
+    CURL *handle, *curl_code;
     CURLcode res;
     FILE *fp;
     
@@ -301,13 +279,13 @@ int main(int argc, char *argv[])
         curl_easy_getinfo(handle, CURLINFO_CONTENT_LENGTH_DOWNLOAD, &server_t.clen);
         curl_easy_getinfo(handle, CURLINFO_CONTENT_TYPE, &server_t.ctype);
         
-        if(server_t.clen == FAILD)
+        if(server_t.clen == -1)
         	{
-        		printf("Server Content-Length: Oops failed\n");
+        		printf("Server Content-Length: Oops faild\n");
         	}
         else
         	{
-        		printf("Server Content-Length: %G\n", server_t.clen);
+        		printf("Server Content-Length:%G\n", server_t.clen);
         	}
         
         if(server_t.ctype == NULL)
@@ -331,13 +309,13 @@ int main(int argc, char *argv[])
   						}
   				}
   				
-        printf("connection status: %s, perhaps offline ?\n", curl_easy_strerror(res));
+        printf("connection status: %s\n", curl_easy_strerror(res));
         curl_easy_cleanup(handle);
     	}
     else 
     	{
         printf("Error getting CURL handle\n");
-        exit(FAILD);
+        exit(-1);
     	}
 
     if (data.len > 0)
@@ -345,28 +323,28 @@ int main(int argc, char *argv[])
     		if((fp=fopen(DEFILE, "r")) == NULL)
     			{
     				perror("open def.conf");
-    				exit(FAILD);
+    				exit(-1);
     			}
     		
     		memset(filebuffer, 0, sizeof(filebuffer));
     		while((fgets(filebuffer, sizeof(filebuffer), fp)) != NULL)
     		{
-    			filebuffer[strlen(filebuffer)FAILD]='\0';
+    			filebuffer[strlen(filebuffer)-1]='\0';
     			snprintf(regexp_format, sizeof(regexp_format), "\\b%s\\b", filebuffer);
     			// send patterns //
-    			if((sets_res=find_sets(data.bodydata, regexp_format, filebuffer)) == SUCCESS)
+    			if((sets_res=find_sets(data.bodydata, regexp_format)) == 0)
     				{
     					printf("%s\n", url);
-    					return SUCCESS;
+    					return 0;
     				}
-    			else if(res == FAILD)
+    			else if(res == -1)
     			{
-    				printf("failed, cannot compile pattern\n");
-    				exit(FAILD);
+    				printf("faild, cannot compile pattern\n");
+    				exit(-1);
     			}
     			memset(regexp_format, 0, sizeof(regexp_format));
     		}
-    		printf("The received body is not in our black body list\n");
+    		printf("not in our body list\n");
     	} 
     	else
     	 {
@@ -374,5 +352,5 @@ int main(int argc, char *argv[])
     	 }
     	 
     free(data.bodydata);
-    return SUCCESS;
+    return 0;
 }
