@@ -101,7 +101,6 @@ int asnlist(char *_asn)
 				
 				if((fp=fopen(ASNLIST, "r")) == NULL)
 					{
-						fclose(fp);
 						return -1;
 					}
 				
@@ -112,6 +111,7 @@ int asnlist(char *_asn)
 				{	
 					if((ismatch=find_sets(buffer, regexp_format)) == 0)
 						{
+							fcloseOfp);
 							return 0;
 						}
  				}
@@ -136,7 +136,6 @@ int whitelist(char *_domain)
 				
 				if((fp=fopen(KNOWN, "r")) == NULL)
 					{
-						fclose(fp);
 						return -1;
 					}
 				
@@ -145,6 +144,7 @@ int whitelist(char *_domain)
 				{	
 					if((ismatch=find_sets(buffer, _domain)) == 0)
 						{
+							fclose(fp);
 							return 0;
 						}
  				}
