@@ -111,7 +111,7 @@ int asnlist(char *_asn)
 				{	
 					if((ismatch=find_sets(buffer, regexp_format)) == 0)
 						{
-							fcloseOfp);
+							fclose(fp);
 							return 0;
 						}
  				}
