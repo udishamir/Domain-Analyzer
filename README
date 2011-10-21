@@ -18,7 +18,13 @@ windows porting is in progress,
 
 (1) PCRE integrated succefully
 (2) CURL integrated succefully 
-(3) GEO linking issues ....
+
+currently working:
+
+(1) white listing
+(2) full curl + ACL
+
+(3) starting GEO integration ....
 
 
 
