@@ -14,18 +14,15 @@ compiled on OSX, Linux.
 
 Windows
 -------
-windows porting is in progress, 
+currently working:
 
 (1) PCRE integrated succefully
 (2) CURL integrated succefully 
 (3) GEO integrated succefully 
 
-currently working:
+windows porting is in progress, 
 
-(1) white listing
-(2) full curl + ACL
-(3) hashing in progress ...
-
+(3) hashing  ...
 
 
 Contact:
