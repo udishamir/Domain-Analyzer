@@ -18,13 +18,13 @@ windows porting is in progress,
 
 (1) PCRE integrated succefully
 (2) CURL integrated succefully 
+(3) GEO integrated succefully 
 
 currently working:
 
 (1) white listing
 (2) full curl + ACL
-(3) Geo Integration 
-(4) hashing in progress ...
+(3) hashing in progress ...
 
 
 
