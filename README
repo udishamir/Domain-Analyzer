@@ -14,16 +14,7 @@ compiled on OSX, Linux.
 
 Windows
 -------
-currently working:
-
-(1) PCRE integrated succefully
-(2) CURL integrated succefully 
-(3) GEO integrated succefully 
-
-windows porting is in progress, 
-
-(3) hashing  ...
-
+precompiled version avilable.
 
 Contact:
 udi@binalyze.com
