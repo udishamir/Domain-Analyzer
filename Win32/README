@@ -1,0 +1,9 @@
+domainanalyzer for windows x86.
+
+to execute make sure the following files are installed in same directory with domainanalyzer.exe:
+
+pcre.dll, curl.dll, zlib1.dll, GeoIP.dll, GeoIPASNum.dat, GeoIP.dat, asn.conf, wlist.conf, def.conf
+
+please email me with any issue:
+udi@binalyze.com
+
