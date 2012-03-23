@@ -1,6 +1,10 @@
 Domain Analyzer tries to detect malicious domain by the following methods:
 
-it does what you tell him to do.
+1. Consult constantly updated Black ASN (Autonomous system) numbers
+2. Try to connect to the domain address and examine the body response (can be customized by changing the ACL file)
+3. consult known (good) domains
+4. detect FLUX domains
+
 
 many thanks to Anton. Z 
 Binalyze Malware Researcher.
