@@ -6,13 +6,117 @@ Domain Analyzer tries to detect malicious domains using the following methods:
 3. Check the domain against Alexa's monthly updated top 1M known (good) domains
 4. Detection of Fast-FLUX domains using Maxmind's GeoIP library 
 
-
 Many thanks to Anton Z., Binalyze malware researcher.
 
-Building
---------
+-------------
+E X A M P L E 
+-------------
+FLUX Domain Detection:
 
-Linux/BSD/OSX
+./domainanalyzer rushsjhdhfjsldif.su
+
+domain not detected in white list..
+--
+Asn:AS9371 SAKURA
+Country:JP
+ASN not detected as black..
+--
+Flux INFO
+219.94.194.138:::JP
+41.168.5.140:::ZA
+
+Might be flux domain ...... *
+61.187.191.16:::CN
+
+Might be flux domain ...... *
+62.85.27.129:::LV
+
+Might be flux domain ...... *
+78.83.233.242:::BG
+
+Might be flux domain ...... *
+83.238.208.55:::PL
+
+Might be flux domain ...... *
+125.19.103.198:::IN
+
+Might be flux domain ...... *
+199.71.214.180:::US
+
+Might be flux domain ...... *
+200.169.13.84:::BR
+
+Might be flux domain ...... *
+202.143.147.35:::TH
+
+Might be flux domain ...... *
+202.149.85.37:::ID
+
+Might be flux domain ...... *
+210.56.23.100:::PK
+
+Might be flux domain ...... *
+210.56.24.226:::PK
+
+Might be flux domain ...... *
+210.109.108.210:::KR
+
+Might be flux domain ...... *
+211.44.250.173:::KR
+
+Might be flux domain ...... *
+
+--
+Server Content-Length:3397
+Server Content-Type->text/html
+Server response->200
+connection status: No error
+not in our body list
+
+------------------------------
+
+Detecting Redirection:
+
+./domainanalyzer www4.uji.es
+--
+domain not detected in white list..
+--
+Asn:AS766 RedIRIS
+Country:ES
+ASN not detected as black..
+--
+Flux INFO
+150.128.98.29:::ES
+84.124.83.29:::ES
+
+Might be flux domain ...... *
+--
+Server Content-Length:301
+Server Content-Type->text/html; charset=iso-8859-1
+Server response->302
+Server send redirect->:http://www.si.uji.es/servidors/anubis.thtml
+
+--------------------------------
+Black Domain
+
+./domainanalyzer khvt.com
+--
+domain not detected in white list..
+--
+Asn:AS15244 Lunar
+Country:US
+* ASN in black list ... *
+
+--------------------------------
+
+Building (Linux / OSX / BSD)
+----------------------------
+
+requirments:
+
+1. libpcre (ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.30.tar.bz2)
+2. max mind geoip (http://www.maxmind.com/app/c)
+
 
 ./make
 
