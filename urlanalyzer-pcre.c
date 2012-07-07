@@ -23,6 +23,10 @@
 #define MAX_MATCH	(uint32_t) 128
 #define SUCCESS (uint32_t) 0  
 
+// forward declarations
+int md5sum(char *hashsum, char *fname);
+int getaddr (char *dom);
+
 struct server_headers
 {
 		long http_code;
@@ -234,7 +238,7 @@ int main(int argc, char *argv[])
 		// flux //	
 		getaddr(argv[1]);
 		
-    CURL *handle, *curl_code;
+    CURL *handle;
     CURLcode res;
     FILE *fp;
     

@@ -57,6 +57,7 @@ unsigned long get_size_by_fd(int fd) {
     return statbuf.st_size;
 }
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 int md5sum(char *hashsum, char *fname)
 {
     int file_descript;
@@ -70,10 +71,11 @@ int md5sum(char *hashsum, char *fname)
     file_size = get_size_by_fd(file_descript);
 
     file_buffer = mmap(0, file_size, PROT_READ, MAP_SHARED, file_descript, 0);
-    MD5((unsigned char*) file_buffer, file_size, result);
+    MD5((unsigned char*) file_buffer, file_size, (unsigned char *)result);
 		
 		// translate binary to ascii //
     hex2char(result, 16, hashsum);
     
     return SUCCESS;
 }
+#pragma GCC diagnostic warning "-Wdeprecated-declarations"
