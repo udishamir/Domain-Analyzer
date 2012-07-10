@@ -13,11 +13,8 @@
 #include <errno.h>
 #include <pcre.h> 
 
-#include "asn.h"
+#include "common.h"
 
-#define DEFILE "def.conf"
-#define KNOWN "wlist.conf"
-#define ASNLIST "asn.conf"
 #define OVECCOUNT (uint32_t) 30
 #define MD5MAX (uint32_t) 32
 #define MAX_MATCH  (uint32_t) 128
@@ -29,6 +26,9 @@ static const uint32_t DATA_SIZE = 1024;
 // forward declarations (chksum.c)
 int md5sum(char *hashsum, char *fname);
 int getaddr (char *dom);
+
+// forward declarations (asn.c)
+int ASN (IN const char * domain, OUT char **asn, OUT char **asn_details);  
 
 struct server_headers
 {
@@ -97,7 +97,7 @@ static size_t write_data(void *buffer, size_t size, size_t nmemb, void *userp)
         /* check for realloc failing in real code. */
         wdi->bodydata = realloc(wdi->bodydata, wdi->size*2);
         wdi->size*=2;
-     }
+    }
 
     memcpy(wdi->bodydata + wdi->len, buffer, size * nmemb);
     wdi->len+=size*nmemb;
@@ -112,12 +112,12 @@ int asnlist(char *_asn)
     int ismatch;
     char buffer[4096];
     char regexp_format[128];
-    
     struct stat fstat;
     
     if((stat(ASNLIST, &fstat)) == -1)
     {
-        printf("asn.conf does not exist giving up on asn black listings\n");
+        fprintf(stderr, "asn.conf does not exist\n"
+                        "giving up on asn black listings\n");
         return -ENOENT;
     }
 
@@ -130,17 +130,30 @@ int asnlist(char *_asn)
     memset(buffer, 0, sizeof(buffer));    
     memset(regexp_format, 0, sizeof(regexp_format));
     snprintf(regexp_format, sizeof(regexp_format), "\\b%s\\b", _asn);
+    int rc = 0;
     while((fgets(buffer, sizeof(buffer), fp)) != NULL)
     {    
-        if((ismatch=find_sets(buffer, regexp_format)) == 0)
+        buffer[sizeof(buffer) - 1] = (char)'\0';
+        ismatch = find_sets(buffer, regexp_format);
+        
+        if (ismatch < 0)
+        {
+            rc = -ENOENT;
+            goto error; 
+        }
+
+        if(ismatch == 0)
         {
             fclose(fp);
             return 0;
         }
      }
+
+     rc = 1;
+
+ error:
      fclose(fp);
-     
-     return -EINVAL;
+     return rc;
 }
 
 // check white list //
@@ -184,12 +197,12 @@ int main(int argc, char *argv[])
     
     if(argc != 2)
     {
-        printf("domain analyzer: usage:%s domain/ip\n", argv[0]);
+        fprintf(stderr, "domain analyzer: usage:%s domain/ip\n", argv[0]);
         // get ASN && WLIST versions //
         if((md5sum(asnver, ASNLIST)) == SUCCESS) printf("ASN Ver::%s\n", asnver);
         if((md5sum(wlistver, KNOWN)) == SUCCESS) printf("WLIST Ver::%s\n", wlistver);
 
-        return 0;
+        return -1;
     }
 
     char * domain = argv[1];
@@ -200,35 +213,36 @@ int main(int argc, char *argv[])
     server = gethostbyname(domain);
     if (server == NULL)
     {
-        printf("no such host\n");
+        fprintf(stderr, "%s: no such host\n", domain);
         return -1;
     }
 
     int restatus=0;
-    char ASNBUFFER[7], ASNDETAILS[64], regexp_format[MAX_MATCH];
-        // initialize buffers //
-    memset(ASNBUFFER, 0, sizeof(ASNBUFFER));
-    memset(ASNDETAILS, 0, sizeof(ASNDETAILS));
+    char * ASNBUFFER, * ASNDETAILS;
+    char regexp_format[MAX_MATCH];
         
     // verify white lists first //
     if((restatus=whitelist(domain)) == 0)
     {
-        printf("domain is clean\n");
+        printf("%s is in white list\n", domain);
         return 0;
     }
     else
     {
-        printf("--\ndomain not detected in white list..\n");
+        printf("--\n"
+               "domain not detected in white list..\n");
     }
         
     // calling ASN RESOLVER //
-    if((restatus=ASN(ASNBUFFER, ASNDETAILS, domain)) == -1)
+    restatus=ASN(domain, &ASNBUFFER, &ASNDETAILS);
+    if(restatus < 0)
     {
-        printf("ASN resolver failed");
+        fprintf(stderr, "ASN resolver failed");
     }
     else
     {
         printf("--\nAsn:%s %s\n", ASNBUFFER, ASNDETAILS);
+        free(ASNDETAILS);
     }
 
     char * cc = get_cc_from_domain(domain);
@@ -239,19 +253,27 @@ int main(int argc, char *argv[])
     }
     else
     {
-        printf("Oops, failed to retrieve CC\n");
+        fprintf(stderr, "Oops, failed to retrieve CC\n");
     }
 
     // verify black asn lists first //
-    if((restatus=asnlist(ASNBUFFER)) == 0)
+    restatus=asnlist(ASNBUFFER);
+    free(ASNBUFFER);
+
+    if(restatus == 0)
     {
         printf("* ASN in black list ... *\n");
         return 0;
     }
-    else
+    else if (restatus > 0)
     {
         printf("ASN not detected as black..\n--\n");
     }
+    else
+    {
+        fprintf(stderr, "Cannot determine ASN status.\n");
+    }
+
     // flux //    
     getaddr(argv[1]);
     
@@ -261,7 +283,6 @@ int main(int argc, char *argv[])
     data.bodydata = malloc(data.size);
 
     int rc = -1;
-
     if (0 > read_from_url(domain, &data))
     {
         goto cleanup; 

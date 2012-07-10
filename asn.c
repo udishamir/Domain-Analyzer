@@ -15,30 +15,62 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include <GeoIP.h>
+#include <errno.h>
 
-#define SUCCESS (uint32_t) 0
-#define FAILD -1 
+#include "common.h"
 
-int ASN (char *DOMBUFFER, char *ASNDETAILS, char *DOM) 
+int ASN (const char * domain, char **asn, char **asn_details) 
 {
-	GeoIP *gi;
-  char *org;
+    GeoIP *gi;
+    char *org;
 
-	gi = GeoIP_open("GeoIPASNum.dat", GEOIP_STANDARD);
+    if (!asn || !asn_details) 
+    {
+        return -1;
+    }
 
-	if (gi == NULL)
-	 {
-		printf("Error opening database\n");
-		return FAILD;
-	 }
+    gi = GeoIP_open("GeoIPASNum.dat", GEOIP_STANDARD);
+    if (gi == NULL)
+    {
+        fprintf(stderr, "Error opening database\n");
+        return -EINVAL;
+    }
 
-	org = GeoIP_org_by_name (gi, (const char *)DOM);
-	if (org != NULL)
-		{
-			sscanf(org,"%s\t%s", DOMBUFFER, ASNDETAILS);
-		}
+    org = GeoIP_org_by_name (gi, domain);
+    GeoIP_delete(gi);
+    
+    if (org == NULL)
+    {
+        return -ENOENT;
+    }
 
-	GeoIP_delete(gi);
+    //
+    // find allocation size for ASN and details
+    int size = 0;
 
-	return SUCCESS;
+    char * ptr = org;
+    while (*ptr != '\t' &&
+           *ptr)
+    {
+        size++;
+        ptr++;
+    }
+
+    *ptr = '\0';
+    ptr++;
+
+    *asn = strdup(org);
+    if (!*asn)
+    {
+        return -ENOMEM;
+    }
+
+    *asn_details = strdup(ptr);
+    if (!*asn_details)
+    {
+        free(*asn);
+        return -ENOMEM;
+    }
+
+    return 0;
 }
