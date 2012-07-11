@@ -3,6 +3,7 @@
 
 #define IN
 #define OUT
+#define OPTIONAL
 
 #define DEFILE "def.conf"
 #define KNOWN "wlist.conf"

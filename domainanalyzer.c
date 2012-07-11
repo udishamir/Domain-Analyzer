@@ -30,11 +30,6 @@ void usage(const char * p)
 
 int main(int argc, char *argv[])
 {
-    int verbose = 0;
-    char asnver[MD5MAX], wlistver[MD5MAX];
-    memset(asnver, 0, sizeof(asnver));
-    memset(wlistver, 0, sizeof(wlistver));
-    
     if((argc != 2) && (argc != 3))
     {
         usage(argv[0]);
@@ -42,6 +37,7 @@ int main(int argc, char *argv[])
     }
 
     char * host;
+    int verbose = 0;    
 
     // too lazy for getopt
     if (argc == 3)
@@ -68,20 +64,16 @@ int main(int argc, char *argv[])
     }
          
     // check if host is alive //
-    struct hostent *server;
-        
-    server = gethostbyname(host);
+    struct hostent * server = gethostbyname(host);
     if (server == NULL)
     {
         fprintf(stderr, "%s: no such host\n", host);
         return -1;
     }
 
-    int restatus=0;
-    char * ASNBUFFER, * ASNDETAILS;
-        
     // verify white lists first //
-    if((restatus=check_whitelist(host)) == 0)
+    int restatus = check_whitelist(host);
+    if (restatus == 0)
     {
         printf("%s is in white list\n", host);
         return 0;
@@ -92,23 +84,26 @@ int main(int argc, char *argv[])
     }
         
     // calling ASN RESOLVER //
-    restatus=get_asn(host, &ASNBUFFER, &ASNDETAILS);
+    char * asn_name;
+    char * asn_details;        
+
+    restatus = get_asn(host, &asn_name, &asn_details);
     if(restatus < 0)
     {
         fprintf(stderr, "ASN resolver failed");
     }
     else
     {
-        printf("ASN=%s %s\n", ASNBUFFER, ASNDETAILS);
-        free(ASNDETAILS);
+        printf("ASN=%s (%s)\n", asn_name, asn_details);
+        free(asn_details);
     }
     // verify black asn lists first //
-    restatus=check_asn(ASNBUFFER);
-    free(ASNBUFFER);
+    restatus = check_asn(asn_name);
+    free(asn_name);
 
-    if(restatus == 0)
+    if (restatus == 0)
     {
-        printf("*** ASN %s in black list! ***\n", ASNBUFFER);
+        printf("*** ASN %s in black list! ***\n", asn_name);
         return 0;
     }
     else if (restatus > 0)
@@ -123,7 +118,7 @@ int main(int argc, char *argv[])
     char * cc = get_cc_from_domain(host);
     if (cc)
     {
-        printf("Country:%s\n", cc);
+        printf("Country: %s\n", cc);
         free(cc);
     }
     else

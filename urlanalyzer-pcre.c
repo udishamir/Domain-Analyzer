@@ -101,7 +101,7 @@ static size_t write_data(void *buffer, size_t size, size_t nmemb, void *userp)
 {
     struct httpbody * wdi = userp;
 
-    while(wdi->len + (size * nmemb) >= wdi->size)
+    while (wdi->len + (size * nmemb) >= wdi->size)
     {
         /* check for realloc failing in real code. */
         wdi->bodydata = realloc(wdi->bodydata, wdi->size*2);
@@ -115,7 +115,7 @@ static size_t write_data(void *buffer, size_t size, size_t nmemb, void *userp)
 }
 
 
-int read_from_url(const char * domain, struct httpbody * data, FILE * fp)
+int read_from_url(IN const char * domain, OUT struct httpbody * data, IN OPTIONAL FILE * fp)
 {
     CURL * handle = NULL;
     CURLcode curl_res;
