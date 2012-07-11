@@ -4,7 +4,6 @@
 #define IN
 #define OUT
 
-
 #define DEFILE "def.conf"
 #define KNOWN "wlist.conf"
 #define ASNLIST "asn.conf"

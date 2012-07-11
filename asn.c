@@ -1,25 +1,10 @@
-/* domainanalyzer, by udi shamir
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
 #include <GeoIP.h>
-#include <errno.h>
 
-#include "common.h"
+#include "libdom.h"
 
-int ASN (const char * domain, char **asn, char **asn_details) 
+int find_sets(char * response_body, const char * pattern);
+
+int get_asn (const char * domain, char ** asn, char **asn_details) 
 {
     GeoIP *gi;
     char *org;
@@ -32,8 +17,7 @@ int ASN (const char * domain, char **asn, char **asn_details)
     gi = GeoIP_open("GeoIPASNum.dat", GEOIP_STANDARD);
     if (gi == NULL)
     {
-        fprintf(stderr, "Error opening database\n");
-        return -EINVAL;
+        return -1;
     }
 
     org = GeoIP_org_by_name (gi, domain);
@@ -41,7 +25,7 @@ int ASN (const char * domain, char **asn, char **asn_details)
     
     if (org == NULL)
     {
-        return -ENOENT;
+        return -1;
     }
 
     //
@@ -62,15 +46,95 @@ int ASN (const char * domain, char **asn, char **asn_details)
     *asn = strdup(org);
     if (!*asn)
     {
-        return -ENOMEM;
+        return -1;
     }
 
     *asn_details = strdup(ptr);
     if (!*asn_details)
     {
         free(*asn);
-        return -ENOMEM;
+        return -1;
     }
 
     return 0;
+}  
+
+// check ASN black list //
+int check_asn(const char * _asn)
+{
+    FILE *fp;
+    int ismatch;
+    char buffer[4096];
+    char regexp_format[128];
+    struct stat fstat;
+    
+    if((stat(ASNLIST, &fstat)) == -1)
+    {
+        return -1;
+    }
+
+    if((fp=fopen(ASNLIST, "r")) == NULL)
+    {
+        return -1;
+    }
+    
+    memset(buffer, 0, sizeof(buffer));    
+    memset(regexp_format, 0, sizeof(regexp_format));
+    snprintf(regexp_format, sizeof(regexp_format), "\\b%s\\b", _asn);
+    int rc = 0;
+    while((fgets(buffer, sizeof(buffer), fp)) != NULL)
+    {    
+        buffer[sizeof(buffer) - 1] = (char)'\0';
+        ismatch = find_sets(buffer, regexp_format);
+        
+        if (ismatch < 0)
+        {
+            rc = -1;
+            goto error; 
+        }
+
+        if(ismatch == 0)
+        {
+            fclose(fp);
+            return 0;
+        }
+     }
+
+     rc = 1;
+
+ error:
+     fclose(fp);
+     return rc;
+}
+
+// check white list //
+int check_whitelist(const char * _domain)
+{
+    FILE *fp;
+    int ismatch;
+    char buffer[4096];
+    struct stat fstat;
+    
+    if((stat(KNOWN, &fstat)) == -1)
+    {
+        return -1;
+    }
+    
+    if((fp=fopen(KNOWN, "r")) == NULL)
+    {
+        return -1;
+    }
+    
+    memset(buffer, 0, sizeof(buffer));    
+    while((fgets(buffer, sizeof(buffer), fp)) != NULL)
+    {    
+        if((ismatch=find_sets(buffer, _domain)) == 0)
+        {
+            fclose(fp);
+            return 0;
+        }
+     }
+     fclose(fp);
+     
+     return 1;
 }

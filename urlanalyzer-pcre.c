@@ -14,52 +14,70 @@
 #include <pcre.h> 
 
 #include "common.h"
+#include "libdom.h"
+#include "chksum.h"
+
+#define MAX_MATCH  (uint32_t) 128
+
+const char * asn_version()
+{
+    static int init = 0;
+    static char version[100];
+
+    if (!init) 
+    {
+        if (md5sum(version, ASNLIST) < 0)
+        {
+            strcpy(version, "<unknown>");
+        }
+        else
+        {
+            init = 1;
+        }
+    }
+
+    return version;
+}
+
+const char * whitelist_version()
+{
+    static int init = 0;
+    static char version[100];
+
+    if (!init) 
+    {
+        if (md5sum(version, KNOWN) < 0)
+        {
+            strcpy(version, "<unknown>");
+        }
+        else
+        {
+            init = 1;
+        }
+    }
+
+    return version;
+}
 
 #define OVECCOUNT (uint32_t) 30
-#define MD5MAX (uint32_t) 32
-#define MAX_MATCH  (uint32_t) 128
-#define SUCCESS (uint32_t) 0  
-
-// initial data to read from the wire for comparison and analysis
-static const uint32_t DATA_SIZE = 1024;
 
 // forward declarations (chksum.c)
 int md5sum(char *hashsum, char *fname);
-int getaddr (char *dom);
-
-// forward declarations (asn.c)
-int ASN (IN const char * domain, OUT char **asn, OUT char **asn_details);  
-
-struct server_headers
-{
-	long http_code;
-	double clen;
-	char *rurl;
-	char *ctype;
-};
-    
-struct httpbody_structure
-{
-	size_t size;
-	size_t len;
-	char *bodydata;
-};
-
-int read_from_url(const char * domain, struct httpbody_structure * data);
-char * get_cc_from_domain(const char * domain);
 
 // fake user-agent //
 static const char USER_AGENT[]="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1;\
                                 WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729;\
                                 .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)";
 
-static const char HTTP_PROTO[] = "http://";
-    
+static const char HTTP_PROTO[] = "http://";  
+
+// initial data to read from the wire for comparison and analysis
+static const uint32_t DATA_SIZE = 1024;
+
 
 // search suspicious patterns //
 int find_sets(char *respond_body, char *pattern)
-{
-    //printf(":::::::::%s:::::::::::\n", pattern);
+{   
     pcre *re;
     const char *error;
     int erroffset;
@@ -67,30 +85,21 @@ int find_sets(char *respond_body, char *pattern)
     int rc;
     
     re = pcre_compile(pattern, 0, &error, &erroffset, NULL);
-    if (! re)
-    {    
-        fprintf(stderr, 
-            "PCRE compilation failed at expression offset %d: %s\n", erroffset, error); 
+    if (!re)
+    { 
         return -1;
     }
     
     rc = pcre_exec(re, NULL, respond_body, strlen(respond_body), 0, 0, ovector, OVECCOUNT);
     pcre_free(re);
 
-    if(rc == 1)
-    {
-        return 0;
-    }
-    else 
-    {
-        return 1;
-    }
+    return (rc == 1)?0:1;
 } 
 
 // libcurl buffer //
 static size_t write_data(void *buffer, size_t size, size_t nmemb, void *userp)
 {
-    struct httpbody_structure *wdi = userp;
+    struct httpbody * wdi = userp;
 
     while(wdi->len + (size * nmemb) >= wdi->size)
     {
@@ -105,235 +114,8 @@ static size_t write_data(void *buffer, size_t size, size_t nmemb, void *userp)
     return size * nmemb;
 }
 
-// check ASN black list //
-int asnlist(char *_asn)
-{
-    FILE *fp;
-    int ismatch;
-    char buffer[4096];
-    char regexp_format[128];
-    struct stat fstat;
-    
-    if((stat(ASNLIST, &fstat)) == -1)
-    {
-        fprintf(stderr, "asn.conf does not exist\n"
-                        "giving up on asn black listings\n");
-        return -ENOENT;
-    }
 
-    if((fp=fopen(ASNLIST, "r")) == NULL)
-    {
-        perror("open asn.conf");
-        return -ENOENT;
-    }
-    
-    memset(buffer, 0, sizeof(buffer));    
-    memset(regexp_format, 0, sizeof(regexp_format));
-    snprintf(regexp_format, sizeof(regexp_format), "\\b%s\\b", _asn);
-    int rc = 0;
-    while((fgets(buffer, sizeof(buffer), fp)) != NULL)
-    {    
-        buffer[sizeof(buffer) - 1] = (char)'\0';
-        ismatch = find_sets(buffer, regexp_format);
-        
-        if (ismatch < 0)
-        {
-            rc = -ENOENT;
-            goto error; 
-        }
-
-        if(ismatch == 0)
-        {
-            fclose(fp);
-            return 0;
-        }
-     }
-
-     rc = 1;
-
- error:
-     fclose(fp);
-     return rc;
-}
-
-// check white list //
-int whitelist(char *_domain)
-{
-    FILE *fp;
-    int ismatch;
-    char buffer[4096];
-    struct stat fstat;
-    
-    if((stat(KNOWN, &fstat)) == -1)
-    {
-        printf("wlist.conf does not exist giving up on white listings\n");
-        return 2;
-    }
-    
-    if((fp=fopen(KNOWN, "r")) == NULL)
-    {
-        return -1;
-    }
-    
-    memset(buffer, 0, sizeof(buffer));    
-    while((fgets(buffer, sizeof(buffer), fp)) != NULL)
-    {    
-        if((ismatch=find_sets(buffer, _domain)) == 0)
-        {
-            fclose(fp);
-            return 0;
-        }
-     }
-     fclose(fp);
-     
-     return 3;
-}
-    
-int main(int argc, char *argv[])
-{
-    char asnver[MD5MAX], wlistver[MD5MAX];
-    memset(asnver, 0, sizeof(asnver));
-    memset(wlistver, 0, sizeof(wlistver));
-    
-    if(argc != 2)
-    {
-        fprintf(stderr, "domain analyzer: usage:%s domain/ip\n", argv[0]);
-        // get ASN && WLIST versions //
-        if((md5sum(asnver, ASNLIST)) == SUCCESS) printf("ASN Ver::%s\n", asnver);
-        if((md5sum(wlistver, KNOWN)) == SUCCESS) printf("WLIST Ver::%s\n", wlistver);
-
-        return -1;
-    }
-
-    char * domain = argv[1];
-         
-    // check if domain is alive //
-    struct hostent *server;
-        
-    server = gethostbyname(domain);
-    if (server == NULL)
-    {
-        fprintf(stderr, "%s: no such host\n", domain);
-        return -1;
-    }
-
-    int restatus=0;
-    char * ASNBUFFER, * ASNDETAILS;
-    char regexp_format[MAX_MATCH];
-        
-    // verify white lists first //
-    if((restatus=whitelist(domain)) == 0)
-    {
-        printf("%s is in white list\n", domain);
-        return 0;
-    }
-    else
-    {
-        printf("--\n"
-               "domain not detected in white list..\n");
-    }
-        
-    // calling ASN RESOLVER //
-    restatus=ASN(domain, &ASNBUFFER, &ASNDETAILS);
-    if(restatus < 0)
-    {
-        fprintf(stderr, "ASN resolver failed");
-    }
-    else
-    {
-        printf("--\nAsn:%s %s\n", ASNBUFFER, ASNDETAILS);
-        free(ASNDETAILS);
-    }
-
-    char * cc = get_cc_from_domain(domain);
-    if (cc)
-    {
-        printf("Country:%s\n", cc);
-        free(cc);
-    }
-    else
-    {
-        fprintf(stderr, "Oops, failed to retrieve CC\n");
-    }
-
-    // verify black asn lists first //
-    restatus=asnlist(ASNBUFFER);
-    free(ASNBUFFER);
-
-    if(restatus == 0)
-    {
-        printf("* ASN in black list ... *\n");
-        return 0;
-    }
-    else if (restatus > 0)
-    {
-        printf("ASN not detected as black..\n--\n");
-    }
-    else
-    {
-        fprintf(stderr, "Cannot determine ASN status.\n");
-    }
-
-    // flux //    
-    getaddr(argv[1]);
-    
-    struct httpbody_structure data = {0};
-   
-    data.size = DATA_SIZE;
-    data.bodydata = malloc(data.size);
-
-    int rc = -1;
-    if (0 > read_from_url(domain, &data))
-    {
-        goto cleanup; 
-    }
-
-    FILE *fp = fopen(DEFILE, "r");
-    if (data.len > 0)
-    {
-        if(fp == NULL)
-        {
-            perror("open" DEFILE);
-            goto cleanup; 
-        }
-
-        char filebuffer[1024] = {0};
-        while ((fgets(filebuffer, sizeof(filebuffer), fp)) != NULL)
-        {
-            // ensure 0-termination
-            filebuffer[sizeof(filebuffer)-1]='\0';
-
-            snprintf(regexp_format, sizeof(regexp_format), "\\b%s\\b", filebuffer);
-            // send patterns //
-            int sets_res = find_sets(data.bodydata, regexp_format);
-            if (sets_res == 0)
-            {
-                printf("%s\n",domain);
-                break;
-            }
-            else if (sets_res == -1)
-            {
-                printf("failed, cannot compile pattern\n");
-                goto cleanup;
-            }
-            memset(regexp_format, 0, sizeof(regexp_format));
-        }
-        printf("not in our body list\n");
-    } 
-    else
-    {
-        printf("No data returned\n");
-    }
-
-    rc = 0;
-
-cleanup:
-    free(data.bodydata);
-    if (fp) fclose(fp);
-    return rc;
-}
-
-int read_from_url(const char * domain, struct httpbody_structure * data)
+int read_from_url(const char * domain, struct httpbody * data, FILE * fp)
 {
     CURL * handle = NULL;
     CURLcode curl_res;
@@ -375,32 +157,32 @@ int read_from_url(const char * domain, struct httpbody_structure * data)
     
     if(server_t.clen == -1)
     {
-        printf("Server Content-Length: Oops failed\n");
+        if (fp) fprintf(fp, "Content-Length: ???\n");
     }
     else
     {
-        printf("Server Content-Length:%G\n", server_t.clen);
+        if (fp) fprintf(fp, "Content-Length: %G\n", server_t.clen);
     }
 
     if(server_t.ctype == NULL)
     {
-        printf("Server Content-Type->empty\n");
+        if (fp) fprintf(fp, "Content-Type is unset\n");
     }
     else
     {
-        printf("Server Content-Type->%s\n", server_t.ctype);
+        if (fp) fprintf(fp, "Content-Type: %s\n", server_t.ctype);
     }
 
-    printf("Server curl_response->%lu\n", server_t.http_code);
+    if (fp) fprintf(fp, "HTTP status: %lu\n", server_t.http_code);
 
     if((server_t.http_code > 207) && (server_t.rurl != NULL))
     {
-        printf("Server send redirect->:%s\n", server_t.rurl);
+        if (fp) fprintf(fp, "HTTP redirect -> %s\n", server_t.rurl);
         rc = 1;
     }
     else 
     {            
-        printf("connection status: %s\n", curl_easy_strerror(curl_res));
+        if (fp) fprintf(fp, "Connection status: %s\n", curl_easy_strerror(curl_res));
         rc = 0;
     }
     
@@ -423,4 +205,63 @@ char * get_cc_from_domain(const char * domain)
     GeoIP_delete(gi);
 
     return result;
+}
+
+int check_home(IN const char * host, IN int verbose)
+{
+    char regexp_format[MAX_MATCH];
+    // flux //    
+    struct httpbody data = {0};
+   
+    data.size = DATA_SIZE;
+    data.bodydata = malloc(data.size);
+
+    int rc = -1;
+    if (0 > read_from_url(host, &data, verbose?stdout:NULL))
+    {
+        goto cleanup; 
+    }
+
+    FILE *fp = fopen(DEFILE, "r");
+    if (data.len > 0)
+    {
+        if(fp == NULL)
+        {
+            rc = -1;
+            goto cleanup; 
+        }
+
+        char filebuffer[1024] = {0};
+        while ((fgets(filebuffer, sizeof(filebuffer), fp)) != NULL)
+        {
+            // ensure 0-termination
+            filebuffer[sizeof(filebuffer)-1]='\0';
+
+            snprintf(regexp_format, sizeof(regexp_format), "\\b%s\\b", filebuffer);
+            // send patterns //
+            int sets_res = find_sets(data.bodydata, regexp_format);
+            if (sets_res == 0)
+            {
+                rc = 0;
+                break;
+            }
+            else if (sets_res == -1)
+            {
+                goto cleanup;
+            }
+            memset(regexp_format, 0, sizeof(regexp_format));
+        }
+        rc = 1;
+    } 
+    else
+    {
+        rc = -1;
+    }
+
+    rc = 0;
+
+cleanup:
+    free(data.bodydata);
+    if (fp) fclose(fp);
+    return rc;
 }
