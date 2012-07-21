@@ -13,7 +13,7 @@
 #include <errno.h>
 
 #include "common.h"
-#include "libdom.h"
+#include "libdoma.h"
 
 #define MD5MAX (uint32_t) 32
 #define SUCCESS (uint32_t) 0  
@@ -126,7 +126,46 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Oops, failed to retrieve CC\n");
     }
 
-    int rc = check_home(host, verbose);
+    int rc; 
+
+    struct flux_entry * flux;
+    rc = get_flux(host, &flux);
+    if (rc < 0)
+    {
+        fprintf(stderr, "Cannot retrieve fast flux information\n");
+    }
+    else
+    {
+        struct flux_entry * current = flux;
+
+        if (current->addr_str)
+        {
+            printf("Printing fast flux analysis for %s...\n", host);
+        }
+
+        int count = 0;
+        for (; current->addr_str; ++current, ++count)
+        {
+            printf("\t%s", current->addr_str);
+            free(current->addr_str);
+
+            if (current->cc[0])
+            {
+                printf(" (%c%c)", current->cc[0], current->cc[1]);
+            }
+
+            printf("\n");
+        }
+
+        if (count > 1)
+        {
+            printf("%s is a suspected flux domain\n", host);
+        }
+
+        free(flux);
+    }
+
+    rc = check_home(host, verbose);
     if (rc < 0)
     {
         fprintf(stderr, "Failed retrieving home page for %s\n", host);

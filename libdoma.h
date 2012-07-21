@@ -18,8 +18,16 @@ struct httpbody
 	char *bodydata;
 };
 
+struct flux_entry
+{
+    char * addr_str;
+    char cc[2];
+};
+
 const char * asn_version(void);
 const char * whitelist_version(void);
+int get_flux(const char * domain, struct flux_entry ** results);
+void release_flux(struct flux_entry * flux);
 int check_whitelist(IN const char * domain);
 int get_asn (IN const char * domain, OUT char **asn, OUT char **asn_details);  
 int check_asn (IN const char * asn_list);

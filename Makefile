@@ -4,7 +4,7 @@ LDFLAGS=-shared -lc
 LIBS=-lcurl -lGeoIP -lpcre -lssl -lcrypto
 LIBDOMA=libdoma.so
 EXECUTABLE=domainanalyzer
-SOURCES=urlanalyzer-pcre.c asn.c chksum.c getaddrinfo.c 
+SOURCES=urlanalyzer-pcre.c asn.c chksum.c flux.c 
 OBJECTS=$(SOURCES:.c=.o)
 
 E_LIBS=$(LIBDOMA)
