@@ -14,7 +14,7 @@
 #include <pcre.h> 
 
 #include "common.h"
-#include "libdom.h"
+#include "libdoma.h"
 #include "chksum.h"
 
 #define MAX_MATCH  (uint32_t) 128

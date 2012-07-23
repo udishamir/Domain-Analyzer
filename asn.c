@@ -1,6 +1,6 @@
 #include <GeoIP.h>
 
-#include "libdom.h"
+#include "libdoma.h"
 
 int find_sets(char * response_body, const char * pattern);
 
