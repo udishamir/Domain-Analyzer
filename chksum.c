@@ -26,9 +26,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "analyzer.h"
 
-#define SUCCESS (uint32_t) 0
-#define FAILD -1 
-
 char result[MD5_DIGEST_LENGTH];
 
 int hex2char(char *data, size_t len, char *buf)
@@ -47,7 +44,7 @@ int hex2char(char *data, size_t len, char *buf)
    
    *p = 0;
    
-   return SUCCESS;
+   return 0;
 }
 
 // Get the size of the file by its file descriptor
@@ -57,6 +54,10 @@ unsigned long get_size_by_fd(int fd) {
     return statbuf.st_size;
 }
 
+#ifdef __APPLE__
+#   pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 int md5sum(char *hashsum, char *fname)
 {
     int file_descript;
@@ -65,15 +66,19 @@ int md5sum(char *hashsum, char *fname)
 
     file_descript = open(fname, O_RDONLY);
     if(file_descript < 0) 
-    	return FAILD;
+    	return -1;
     	
     file_size = get_size_by_fd(file_descript);
 
     file_buffer = mmap(0, file_size, PROT_READ, MAP_SHARED, file_descript, 0);
-    MD5((unsigned char*) file_buffer, file_size, result);
+    MD5((unsigned char*) file_buffer, file_size, (unsigned char *)result);
 		
 		// translate binary to ascii //
     hex2char(result, 16, hashsum);
     
-    return SUCCESS;
+    return 0;
 }
+
+#ifdef __APPLE__
+#   pragma GCC diagnostic warning "-Wdeprecated-declarations"
+#endif
