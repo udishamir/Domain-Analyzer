@@ -34,6 +34,7 @@ int get_asn (const char * domain, char ** asn, char **asn_details)
 
     char * ptr = org;
     while (*ptr != '\t' &&
+           *ptr != ' ' &&
            *ptr)
     {
         size++;
@@ -84,9 +85,9 @@ int check_asn(const char * _asn)
     int rc = 0;
     while((fgets(buffer, sizeof(buffer), fp)) != NULL)
     {    
-        buffer[sizeof(buffer) - 1] = (char)'\0';
         ismatch = find_sets(buffer, regexp_format);
-        
+
+
         if (ismatch < 0)
         {
             rc = -1;
