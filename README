@@ -5,6 +5,7 @@ Domain Analyzer tries to detect malicious domains using the following methods:
 (can be customized by changing the ACL file)
 3. Check the domain against Alexa's monthly updated top 1M known (good) domains
 4. Detection of Fast-FLUX domains using Maxmind's GeoIP library 
+5. Can be configured as service
 
 -------------
 E X A M P L E 
