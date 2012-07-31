@@ -6,8 +6,6 @@ Domain Analyzer tries to detect malicious domains using the following methods:
 3. Check the domain against Alexa's monthly updated top 1M known (good) domains
 4. Detection of Fast-FLUX domains using Maxmind's GeoIP library 
 
-Many thanks to Anton Z., Binalyze malware researcher.
-
 -------------
 E X A M P L E 
 -------------
@@ -125,7 +123,7 @@ a 32-bit precompiled version is available.
 
 Contact:
 
-Udi Shamir
+Udi Shamir, Assaf Segal
 
-udi@binalyze.com
+udi@binalyze.com, assafs@gmail.com
 Binalyze Research Group (c) 2012
