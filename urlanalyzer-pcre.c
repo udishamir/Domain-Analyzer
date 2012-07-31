@@ -14,7 +14,7 @@
 #include <pcre.h> 
 
 #include "common.h"
-#include "libdom.h"
+#include "libdoma.h"
 #include "chksum.h"
 
 #define MAX_MATCH  (uint32_t) 128
@@ -126,7 +126,7 @@ int read_from_url(IN const char * domain, OUT struct httpbody * data, IN OPTIONA
     char url[255 + sizeof(HTTP_PROTO)];
 
     memset(url, 0, sizeof(url));
-    if (snprintf(url, sizeof(url), "%s%s", HTTP_PROTO, domain) >= sizeof(url))
+    if ((size_t)snprintf(url, sizeof(url), "%s%s", HTTP_PROTO, domain) >= sizeof(url))
     {
         // domain is too long, punt
         return -1;
@@ -210,11 +210,11 @@ char * get_cc_from_domain(const char * domain)
 int check_home(IN const char * host, IN int verbose)
 {
     char regexp_format[MAX_MATCH];
-    // flux //    
-    struct httpbody data = {0};
+    struct httpbody data;
    
     data.size = DATA_SIZE;
     data.bodydata = malloc(data.size);
+    data.len = 0;
 
     int rc = -1;
     if (0 > read_from_url(host, &data, verbose?stdout:NULL))

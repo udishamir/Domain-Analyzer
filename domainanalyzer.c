@@ -90,16 +90,17 @@ int main(int argc, char *argv[])
     restatus = get_asn(host, &asn_name, &asn_details);
     if(restatus < 0)
     {
-        fprintf(stderr, "ASN resolver failed");
+        fprintf(stderr, "ASN resolver failed, status=%d\n", restatus);
     }
     else
     {
         printf("ASN=%s (%s)\n", asn_name, asn_details);
         free(asn_details);
+        
+        // verify black asn lists first //
+        restatus = check_asn(asn_name);
+        free(asn_name);
     }
-    // verify black asn lists first //
-    restatus = check_asn(asn_name);
-    free(asn_name);
 
     if (restatus == 0)
     {
@@ -161,7 +162,7 @@ int main(int argc, char *argv[])
         {
             printf("%s is a suspected flux domain\n", host);
         }
-
+        
         free(flux);
     }
 
