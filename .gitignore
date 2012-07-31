@@ -2,4 +2,5 @@
 *.swp
 domainanalyzer
 *.o
+*.so
 tags
