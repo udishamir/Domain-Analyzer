@@ -12,6 +12,7 @@
 #include <netdb.h>
 #include <errno.h>
 
+#include "update.h"
 #include "common.h"
 #include "libdoma.h"
 
@@ -39,7 +40,21 @@ int main(int argc, char *argv[])
     char * host;
     int verbose = 0;    
 
-    // too lazy for getopt
+    if ((0 == strcmp(argv[1], "-u")) || (0 == strcmp(argv[1], "--update")))
+    {
+        // get relative path to executable
+        char download_path[256];
+        strncpy(download_path, argv[0], sizeof(download_path));
+        // find rightmost /
+        int pos;
+        for (pos = strlen(download_path)-1; pos >= 0 && download_path[pos] != '/'; pos--);
+        // strip out file name from path
+        download_path[++pos] = '\0';
+        // update to domain analyzer directory
+        return update(download_path);
+    }
+
+    // TODO: add getopt
     if (argc == 3)
     {
         if (0 == strcmp(argv[1], "-v")) 
