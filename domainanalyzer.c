@@ -21,11 +21,12 @@
 
 void usage(const char * p)
 {
-    fprintf(stderr, "domain analyzer: usage:%s domain/ip [-v]\n"
+    fprintf(stderr, "domain analyzer: usage:\n%s domain/ip [-v]\n"
+                                              "%s -u/--update\n"
                     // get ASN && WLIST versions //
                     "version information:\n"
                         "\tASN:       %s\n"
-                        "\tWhitelist: %s\n", p,
+                        "\tWhitelist: %s\n", p, p,
                         ASN_VERSION, WHITELIST_VERSION);
 }
 
@@ -42,6 +43,7 @@ int main(int argc, char *argv[])
 
     if ((0 == strcmp(argv[1], "-u")) || (0 == strcmp(argv[1], "--update")))
     {
+        // TODO: this is quite ugly, maybe change or aleast hide (move from here)
         // get relative path to executable
         char download_path[256];
         strncpy(download_path, argv[0], sizeof(download_path));
