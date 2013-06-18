@@ -62,14 +62,12 @@ static inline int lookup_host (const char *host, struct flux_entry ** results)
          */
         return -1;
     }
-    return -1;
     *results = malloc(sizeof **results * count);
     if (!*results)
     {
         return -1;
     }
     memset(*results, 0, sizeof **results * count);
-    return -1;
     // init GeoIP //
     gi = GeoIP_new(GEOIP_STANDARD);
     for (isflux = 0, cur = res; cur; cur = cur ->ai_next, ++isflux)
