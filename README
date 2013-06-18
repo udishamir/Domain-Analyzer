@@ -122,9 +122,16 @@ Windows
 -------
 a 32-bit precompiled version is available.
 
+
+New Features Coming:
+
+1. Update fetaure that will fetch the latest ASN and Benign lists
+2. Python bindings, we are working hard to release python bindings 
+3. Light web server allowing easy query for research labs
+
 Contact:
 
-Udi Shamir, Assaf Segal
+Udi Shamir, Assaf Segal, Nir Izraeli
 
-udi@binalyze.com, assafs@gmail.com
+udi@binalyze.com, assafs@gmail.com, nirizr@gmail.com
 Binalyze Research Group (c) 2012
