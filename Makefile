@@ -7,7 +7,7 @@ EXECUTABLE=domainanalyzer
 SOURCES=urlanalyzer-pcre.c asn.c chksum.c flux.c
 OBJECTS=$(SOURCES:.c=.o)
 
-E_LIBS=$(LIBDOMA)
+E_LIBS=$(LIBDOMA) -lcurl
 E_LDFLAGS=
 E_SOURCES=domainanalyzer.c update.c
 E_OBJECTS=$(E_SOURCES:.c=.o)
