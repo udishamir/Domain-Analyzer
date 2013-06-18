@@ -116,7 +116,14 @@ requirments:
 1. libpcre (ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.30.tar.bz2)
 2. max mind geoip (http://www.maxmind.com/app/c)
 
+Compile:
+
 make
+
+Installation
+------------
+1. copy libdoma.so to /usr/lib
+2. ldconfig
 
 Windows
 -------
