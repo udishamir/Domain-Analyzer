@@ -144,8 +144,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Oops, failed to retrieve CC\n");
     }
 
-    int rc; 
-
+    int rc;
     struct flux_entry * flux;
     rc = get_flux(host, &flux);
     if (rc < 0)
@@ -182,7 +181,6 @@ int main(int argc, char *argv[])
         
         free(flux);
     }
-
     rc = check_home(host, verbose);
     if (rc < 0)
     {
@@ -195,4 +193,3 @@ int main(int argc, char *argv[])
 
     return rc;
 }
-
