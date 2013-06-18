@@ -32,7 +32,7 @@ static inline int lookup_host (const char *host, struct flux_entry ** results)
     int errcode;
     int count;
     uint32_t isflux=0;
-    char * addr_str;
+    char * addr_str=NULL;
     void * addr_ptr;
     GeoIP * gi;
 
