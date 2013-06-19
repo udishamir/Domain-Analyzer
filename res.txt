@@ -1,0 +1,1082 @@
+111.223.116.242 not detected in white list.
+ASN=AS4657 (StarHub Internet Exchange)
+ASN not detected as black.
+Country: SG
+Printing fast flux analysis for 111.223.116.242...
+	111.223.116.242 (SG)
+113.160.27.98 not detected in white list.
+ASN=AS45899 (VNPT Corp)
+*** ASN AS45899 in black list! ***
+113.171.16.50 not detected in white list.
+ASN=AS45899 (VNPT Corp)
+*** ASN AS45899 in black list! ***
+113.171.16.54 not detected in white list.
+ASN=AS45899 (VNPT Corp)
+*** ASN AS45899 in black list! ***
+114.255.20.157 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+115.67.229.120 not detected in white list.
+ASN=AS24378 (Total Access Communication PLC.)
+ASN not detected as black.
+Country: TH
+Printing fast flux analysis for 115.67.229.120...
+	115.67.229.120 (TH)
+119.63.193.130 not detected in white list.
+ASN=AS38627 (Baidu, Inc.)
+ASN not detected as black.
+Country: JP
+Printing fast flux analysis for 119.63.193.130...
+	119.63.193.130 (JP)
+119.63.193.131 not detected in white list.
+ASN=AS38627 (Baidu, Inc.)
+ASN not detected as black.
+Country: JP
+Printing fast flux analysis for 119.63.193.131...
+	119.63.193.131 (JP)
+119.63.193.132 not detected in white list.
+ASN=AS38627 (Baidu, Inc.)
+ASN not detected as black.
+Country: JP
+Printing fast flux analysis for 119.63.193.132...
+	119.63.193.132 (JP)
+119.63.193.194 not detected in white list.
+ASN=AS38627 (Baidu, Inc.)
+ASN not detected as black.
+Country: JP
+Printing fast flux analysis for 119.63.193.194...
+	119.63.193.194 (JP)
+119.63.193.195 not detected in white list.
+ASN=AS38627 (Baidu, Inc.)
+ASN not detected as black.
+Country: JP
+Printing fast flux analysis for 119.63.193.195...
+	119.63.193.195 (JP)
+119.63.193.196 not detected in white list.
+ASN=AS38627 (Baidu, Inc.)
+ASN not detected as black.
+Country: JP
+Printing fast flux analysis for 119.63.193.196...
+	119.63.193.196 (JP)
+1.202.219.113 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 1.202.219.113...
+	1.202.219.113 (CN)
+1.202.219.115 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 1.202.219.115...
+	1.202.219.115 (CN)
+1.202.219.116 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 1.202.219.116...
+	1.202.219.116 (CN)
+1.202.219.117 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 1.202.219.117...
+	1.202.219.117 (CN)
+1.202.219.118 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 1.202.219.118...
+	1.202.219.118 (CN)
+1.202.219.119 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 1.202.219.119...
+	1.202.219.119 (CN)
+1.202.219.4 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 1.202.219.4...
+	1.202.219.4 (CN)
+123.125.71.12 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.14 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.15 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.16 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.17 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.19 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.20 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.22 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.23 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.24 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.25 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.26 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.27 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.28 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.29 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.30 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.31 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.32 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.33 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.34 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.35 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.36 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.38 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.39 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.40 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.41 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.42 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.43 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.44 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.45 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.46 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.47 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.48 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.49 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.51 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.52 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.53 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.54 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.55 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.56 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.57 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.58 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.59 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.125.71.60 not detected in white list.
+ASN=AS4808 (CNCGROUP IP network China169 Beijing Province Network)
+*** ASN AS4808 in black list! ***
+123.151.139.192 not detected in white list.
+ASN=AS17638 (ASN for TIANJIN Provincial Net of CT)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 123.151.139.192...
+	123.151.139.192 (CN)
+123.151.148.193 not detected in white list.
+ASN=AS17638 (ASN for TIANJIN Provincial Net of CT)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 123.151.148.193...
+	123.151.148.193 (CN)
+123.151.148.205 not detected in white list.
+ASN=AS17638 (ASN for TIANJIN Provincial Net of CT)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 123.151.148.205...
+	123.151.148.205 (CN)
+147.213.196.4 not detected in white list.
+ASN=AS2607 (Slovak Academic Network)
+ASN not detected as black.
+Country: SK
+Printing fast flux analysis for 147.213.196.4...
+	147.213.196.4 (SK)
+157.55.32.221 not detected in white list.
+ASN=AS8075 (Microsoft Corp)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 157.55.32.221...
+	157.55.32.221 (US)
+157.55.33.47 not detected in white list.
+ASN=AS8075 (Microsoft Corp)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 157.55.33.47...
+	157.55.33.47 (US)
+157.56.92.147 not detected in white list.
+ASN=AS8075 (Microsoft Corp)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 157.56.92.147...
+	157.56.92.147 (US)
+157.56.93.218 not detected in white list.
+ASN=AS8075 (Microsoft Corp)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 157.56.93.218...
+	157.56.93.218 (US)
+173.254.246.56 not detected in white list.
+ASN=AS29761 (OC3 Networks & Web Solutions, LLC)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 173.254.246.56...
+	173.254.246.56 (US)
+176.28.54.34 not detected in white list.
+ASN=AS20773 (AS of Hosteurope Germany / Cologne)
+*** ASN AS20773 in black list! ***
+176.31.242.6 not detected in white list.
+ASN=AS16276 (OVH Systems)
+ASN not detected as black.
+Country: FR
+Printing fast flux analysis for 176.31.242.6...
+	176.31.242.6 (FR)
+178.77.126.55 not detected in white list.
+ASN=AS20773 (AS of Hosteurope Germany / Cologne)
+*** ASN AS20773 in black list! ***
+180.76.5.113 not detected in white list.
+ASN=AS55967 (Beijing Baidu Netcom Science and Technology Co., Ltd.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 180.76.5.113...
+	180.76.5.113 (CN)
+180.76.5.15 not detected in white list.
+ASN=AS55967 (Beijing Baidu Netcom Science and Technology Co., Ltd.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 180.76.5.15...
+	180.76.5.15 (CN)
+180.76.5.154 not detected in white list.
+ASN=AS55967 (Beijing Baidu Netcom Science and Technology Co., Ltd.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 180.76.5.154...
+	180.76.5.154 (CN)
+180.76.5.16 not detected in white list.
+ASN=AS55967 (Beijing Baidu Netcom Science and Technology Co., Ltd.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 180.76.5.16...
+	180.76.5.16 (CN)
+180.76.5.22 not detected in white list.
+ASN=AS55967 (Beijing Baidu Netcom Science and Technology Co., Ltd.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 180.76.5.22...
+	180.76.5.22 (CN)
+180.76.5.51 not detected in white list.
+ASN=AS55967 (Beijing Baidu Netcom Science and Technology Co., Ltd.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 180.76.5.51...
+	180.76.5.51 (CN)
+180.76.5.59 not detected in white list.
+ASN=AS55967 (Beijing Baidu Netcom Science and Technology Co., Ltd.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 180.76.5.59...
+	180.76.5.59 (CN)
+180.76.5.64 not detected in white list.
+ASN=AS55967 (Beijing Baidu Netcom Science and Technology Co., Ltd.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 180.76.5.64...
+	180.76.5.64 (CN)
+180.76.6.21 not detected in white list.
+ASN=AS55967 (Beijing Baidu Netcom Science and Technology Co., Ltd.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 180.76.6.21...
+	180.76.6.21 (CN)
+184.82.29.65 not detected in white list.
+ASN=AS21788 (Network Operations Center Inc.)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 184.82.29.65...
+	184.82.29.65 (US)
+188.138.91.103 not detected in white list.
+ASN=AS8972 (PlusServer AG, Germany)
+ASN not detected as black.
+Country: DE
+Printing fast flux analysis for 188.138.91.103...
+	188.138.91.103 (DE)
+188.40.104.81 not detected in white list.
+ASN=AS24940 (Hetzner Online AG RZ)
+ASN not detected as black.
+Country: DE
+Printing fast flux analysis for 188.40.104.81...
+	188.40.104.81 (DE)
+200.207.70.245 not detected in white list.
+ASN=AS27699 (DE SAO PAULO S/A - TELESP)
+ASN not detected as black.
+Country: BR
+Printing fast flux analysis for 200.207.70.245...
+	200.207.70.245 (BR)
+200.32.35.65 not detected in white list.
+ASN=AS10834 (Telefonica de Argentina)
+ASN not detected as black.
+Country: AR
+Printing fast flux analysis for 200.32.35.65...
+	200.32.35.65 (AR)
+202.46.48.11 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.48.11...
+	202.46.48.11 (CN)
+202.46.49.13 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.49.13...
+	202.46.49.13 (CN)
+202.46.49.14 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.49.14...
+	202.46.49.14 (CN)
+202.46.49.18 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.49.18...
+	202.46.49.18 (CN)
+202.46.49.19 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.49.19...
+	202.46.49.19 (CN)
+202.46.50.19 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.50.19...
+	202.46.50.19 (CN)
+202.46.50.72 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.50.72...
+	202.46.50.72 (CN)
+202.46.51.124 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.51.124...
+	202.46.51.124 (CN)
+202.46.51.47 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.51.47...
+	202.46.51.47 (CN)
+202.46.51.51 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.51.51...
+	202.46.51.51 (CN)
+202.46.52.21 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.52.21...
+	202.46.52.21 (CN)
+202.46.52.28 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.52.28...
+	202.46.52.28 (CN)
+202.46.52.30 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.52.30...
+	202.46.52.30 (CN)
+202.46.52.33 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.52.33...
+	202.46.52.33 (CN)
+202.46.54.178 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.54.178...
+	202.46.54.178 (CN)
+202.46.54.35 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.54.35...
+	202.46.54.35 (CN)
+202.46.54.38 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.54.38...
+	202.46.54.38 (CN)
+202.46.54.45 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.54.45...
+	202.46.54.45 (CN)
+202.46.54.48 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.54.48...
+	202.46.54.48 (CN)
+202.46.54.52 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.54.52...
+	202.46.54.52 (CN)
+202.46.54.59 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.54.59...
+	202.46.54.59 (CN)
+202.46.55.190 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.55.190...
+	202.46.55.190 (CN)
+202.46.55.20 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.55.20...
+	202.46.55.20 (CN)
+202.46.55.23 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.55.23...
+	202.46.55.23 (CN)
+202.46.55.25 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.55.25...
+	202.46.55.25 (CN)
+202.46.55.55 not detected in white list.
+Country: CN
+Printing fast flux analysis for 202.46.55.55...
+	202.46.55.55 (CN)
+202.46.56.41 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.56.41...
+	202.46.56.41 (CN)
+202.46.56.43 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.56.43...
+	202.46.56.43 (CN)
+202.46.56.44 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.56.44...
+	202.46.56.44 (CN)
+202.46.57.62 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.57.62...
+	202.46.57.62 (CN)
+202.46.57.67 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.57.67...
+	202.46.57.67 (CN)
+202.46.57.81 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.57.81...
+	202.46.57.81 (CN)
+202.46.57.82 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.57.82...
+	202.46.57.82 (CN)
+202.46.57.85 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.57.85...
+	202.46.57.85 (CN)
+202.46.58.28 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.58.28...
+	202.46.58.28 (CN)
+202.46.58.30 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.58.30...
+	202.46.58.30 (CN)
+202.46.58.32 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.58.32...
+	202.46.58.32 (CN)
+202.46.59.47 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.59.47...
+	202.46.59.47 (CN)
+202.46.60.61 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.60.61...
+	202.46.60.61 (CN)
+202.46.60.67 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.60.67...
+	202.46.60.67 (CN)
+202.46.61.21 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.61.21...
+	202.46.61.21 (CN)
+202.46.61.34 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.61.34...
+	202.46.61.34 (CN)
+202.46.61.35 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.61.35...
+	202.46.61.35 (CN)
+202.46.62.11 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.62.11...
+	202.46.62.11 (CN)
+202.46.62.16 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.62.16...
+	202.46.62.16 (CN)
+202.46.62.93 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.62.93...
+	202.46.62.93 (CN)
+202.46.63.40 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.63.40...
+	202.46.63.40 (CN)
+202.46.63.48 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.63.48...
+	202.46.63.48 (CN)
+202.46.63.49 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.63.49...
+	202.46.63.49 (CN)
+202.46.63.75 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.63.75...
+	202.46.63.75 (CN)
+202.46.63.77 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.63.77...
+	202.46.63.77 (CN)
+202.46.63.92 not detected in white list.
+ASN=AS2914 (NTT America, Inc.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 202.46.63.92...
+	202.46.63.92 (CN)
+204.124.83.130 not detected in white list.
+ASN=AS46457 (Conformal Systems, LLC.)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 204.124.83.130...
+	204.124.83.130 (US)
+208.115.113.91 not detected in white list.
+ASN=AS23033 (Wowrack.com)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 208.115.113.91...
+	208.115.113.91 (US)
+212.54.145.52 not detected in white list.
+ASN=AS50292 (StratoGen Internet)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 212.54.145.52...
+	212.54.145.52 (US)
+220.181.108.100 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.100...
+	220.181.108.100 (CN)
+220.181.108.101 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.101...
+	220.181.108.101 (CN)
+220.181.108.102 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.102...
+	220.181.108.102 (CN)
+220.181.108.103 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.103...
+	220.181.108.103 (CN)
+220.181.108.105 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.105...
+	220.181.108.105 (CN)
+220.181.108.106 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.106...
+	220.181.108.106 (CN)
+220.181.108.107 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.107...
+	220.181.108.107 (CN)
+220.181.108.108 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.108...
+	220.181.108.108 (CN)
+220.181.108.110 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.110...
+	220.181.108.110 (CN)
+220.181.108.111 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.111...
+	220.181.108.111 (CN)
+220.181.108.112 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.112...
+	220.181.108.112 (CN)
+220.181.108.113 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.113...
+	220.181.108.113 (CN)
+220.181.108.114 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.114...
+	220.181.108.114 (CN)
+220.181.108.115 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.115...
+	220.181.108.115 (CN)
+220.181.108.116 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.116...
+	220.181.108.116 (CN)
+220.181.108.118 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.118...
+	220.181.108.118 (CN)
+220.181.108.121 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.121...
+	220.181.108.121 (CN)
+220.181.108.122 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.122...
+	220.181.108.122 (CN)
+220.181.108.157 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.157...
+	220.181.108.157 (CN)
+220.181.108.176 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.176...
+	220.181.108.176 (CN)
+220.181.108.75 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.75...
+	220.181.108.75 (CN)
+220.181.108.77 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.77...
+	220.181.108.77 (CN)
+220.181.108.78 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.78...
+	220.181.108.78 (CN)
+220.181.108.80 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.80...
+	220.181.108.80 (CN)
+220.181.108.81 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.81...
+	220.181.108.81 (CN)
+220.181.108.83 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.83...
+	220.181.108.83 (CN)
+220.181.108.84 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.84...
+	220.181.108.84 (CN)
+220.181.108.85 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.85...
+	220.181.108.85 (CN)
+220.181.108.86 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.86...
+	220.181.108.86 (CN)
+220.181.108.87 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.87...
+	220.181.108.87 (CN)
+220.181.108.88 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.88...
+	220.181.108.88 (CN)
+220.181.108.89 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.89...
+	220.181.108.89 (CN)
+220.181.108.90 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.90...
+	220.181.108.90 (CN)
+220.181.108.91 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.91...
+	220.181.108.91 (CN)
+220.181.108.92 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.92...
+	220.181.108.92 (CN)
+220.181.108.93 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.93...
+	220.181.108.93 (CN)
+220.181.108.94 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.94...
+	220.181.108.94 (CN)
+220.181.108.95 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.95...
+	220.181.108.95 (CN)
+220.181.108.97 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.97...
+	220.181.108.97 (CN)
+220.181.108.99 not detected in white list.
+ASN=AS23724 (IDC, China Telecommunications Corporation)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 220.181.108.99...
+	220.181.108.99 (CN)
+37.49.226.181 not detected in white list.
+Country: NL
+Printing fast flux analysis for 37.49.226.181...
+	37.49.226.181 (NL)
+42.121.108.43 not detected in white list.
+ASN=AS37963 (Alibaba (China) Technology Co., Ltd.)
+ASN not detected as black.
+Country: CN
+Printing fast flux analysis for 42.121.108.43...
+	42.121.108.43 (CN)
+46.20.37.238 not detected in white list.
+ASN=AS24961 (fibre one networks GmbH, Duesseldorf)
+ASN not detected as black.
+Country: DE
+Printing fast flux analysis for 46.20.37.238...
+	46.20.37.238 (DE)
+46.61.162.211 not detected in white list.
+ASN=AS12389 (OJSC Rostelecom)
+ASN not detected as black.
+Country: RU
+Printing fast flux analysis for 46.61.162.211...
+	46.61.162.211 (RU)
+50.18.135.39 not detected in white list.
+ASN=AS16509 (Amazon.com, Inc.)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 50.18.135.39...
+	50.18.135.39 (US)
+50.19.81.203 not detected in white list.
+ASN=AS14618 (Amazon.com, Inc.)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 50.19.81.203...
+	50.19.81.203 (US)
+5.199.142.135 not detected in white list.
+Country: DE
+Printing fast flux analysis for 5.199.142.135...
+	5.199.142.135 (DE)
+5.9.127.154 not detected in white list.
+Country: DE
+Printing fast flux analysis for 5.9.127.154...
+	5.9.127.154 (DE)
+65.55.213.192 not detected in white list.
+ASN=AS8075 (Microsoft Corp)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 65.55.213.192...
+	65.55.213.192 (US)
+65.55.213.244 not detected in white list.
+ASN=AS8075 (Microsoft Corp)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 65.55.213.244...
+	65.55.213.244 (US)
+65.55.213.245 not detected in white list.
+ASN=AS8075 (Microsoft Corp)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 65.55.213.245...
+	65.55.213.245 (US)
+65.55.213.74 not detected in white list.
+ASN=AS8075 (Microsoft Corp)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 65.55.213.74...
+	65.55.213.74 (US)
+65.55.24.245 not detected in white list.
+ASN=AS8075 (Microsoft Corp)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 65.55.24.245...
+	65.55.24.245 (US)
+66.249.72.210 not detected in white list.
+ASN=AS15169 (Google Inc.)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 66.249.72.210...
+	66.249.72.210 (US)
+66.249.73.66 not detected in white list.
+ASN=AS15169 (Google Inc.)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 66.249.73.66...
+	66.249.73.66 (US)
+66.249.78.67 not detected in white list.
+ASN=AS15169 (Google Inc.)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 66.249.78.67...
+	66.249.78.67 (US)
+67.134.78.47 not detected in white list.
+ASN=AS27516 (Nexus Management Inc.)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 67.134.78.47...
+	67.134.78.47 (US)
+71.46.230.154 not detected in white list.
+ASN=AS33363 (BRIGHT HOUSE NETWORKS, LLC)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 71.46.230.154...
+	71.46.230.154 (US)
+75.125.94.194 not detected in white list.
+ASN=AS21844 (ThePlanet.com Internet Services, Inc.)
+ASN not detected as black.
+Country: US
+Printing fast flux analysis for 75.125.94.194...
+	75.125.94.194 (US)
+79.179.208.77 not detected in white list.
+ASN=AS8551 (Bezeqint Internet Backbone)
+ASN not detected as black.
+Country: IL
+Printing fast flux analysis for 79.179.208.77...
+	79.179.208.77 (IL)
+79.180.191.180 not detected in white list.
+ASN=AS8551 (Bezeqint Internet Backbone)
+ASN not detected as black.
+Country: IL
+Printing fast flux analysis for 79.180.191.180...
+	79.180.191.180 (IL)
+82.80.161.215 not detected in white list.
+ASN=AS8551 (Bezeqint Internet Backbone)
+ASN not detected as black.
+Country: IL
+Printing fast flux analysis for 82.80.161.215...
+	82.80.161.215 (IL)
+85.214.151.16 not detected in white list.
+ASN=AS6724 (STRATO STRATO AG)
+ASN not detected as black.
+Country: DE
+Printing fast flux analysis for 85.214.151.16...
+	85.214.151.16 (DE)
+85.214.72.200 not detected in white list.
+ASN=AS6724 (STRATO STRATO AG)
+ASN not detected as black.
+Country: DE
+Printing fast flux analysis for 85.214.72.200...
+	85.214.72.200 (DE)
+88.191.148.121 not detected in white list.
+ASN=AS12322 (Free SAS)
+ASN not detected as black.
+Country: FR
+Printing fast flux analysis for 88.191.148.121...
+	88.191.148.121 (FR)
+88.208.216.149 not detected in white list.
+ASN=AS15418 (Fasthosts Internet Ltd. Gloucester, UK.)
+ASN not detected as black.
+Country: GB
+Printing fast flux analysis for 88.208.216.149...
+	88.208.216.149 (GB)
+92.113.189.161 not detected in white list.
+ASN=AS6849 (JSC UKRTELECOM,)
+*** ASN AS6849 in black list! ***
+92.113.48.38 not detected in white list.
+ASN=AS6849 (JSC UKRTELECOM,)
+*** ASN AS6849 in black list! ***
+94.125.163.181 not detected in white list.
+ASN=AS21409 (Ikoula Net SAS)
+ASN not detected as black.
+Country: FR
+Printing fast flux analysis for 94.125.163.181...
+	94.125.163.181 (FR)
+94.23.16.72 not detected in white list.
+ASN=AS16276 (OVH Systems)
+ASN not detected as black.
+Country: FR
+Printing fast flux analysis for 94.23.16.72...
+	94.23.16.72 (FR)
+94.23.210.175 not detected in white list.
+ASN=AS16276 (OVH Systems)
+ASN not detected as black.
+Country: FR
+Printing fast flux analysis for 94.23.210.175...
+	94.23.210.175 (FR)
+94.23.28.201 not detected in white list.
+ASN=AS16276 (OVH Systems)
+ASN not detected as black.
+Country: FR
+Printing fast flux analysis for 94.23.28.201...
+	94.23.28.201 (FR)
