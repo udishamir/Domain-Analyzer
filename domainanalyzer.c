@@ -116,22 +116,24 @@ int main(int argc, char *argv[])
         
         // verify black asn lists first //
         restatus = check_asn(asn_name);
-        free(asn_name);
+    	if (restatus == 0)
+    	{
+        	printf("*** ASN %s in black list! ***\n", asn_name);
+        	free(asn_name);
+		return 0;
+    	}
+    	else if (restatus > 0)
+    	{
+        	printf("ASN not detected as black.\n");
+    		free(asn_name);
+	}
+    	else
+    	{
+        	fprintf(stderr, "Cannot determine ASN status.\n");
+		free(asn_name);
+	}			
     }
 
-    if (restatus == 0)
-    {
-        printf("*** ASN %s in black list! ***\n", asn_name);
-        return 0;
-    }
-    else if (restatus > 0)
-    {
-        printf("ASN not detected as black.\n");
-    }
-    else
-    {
-        fprintf(stderr, "Cannot determine ASN status.\n");
-    }
 
     char * cc = get_cc_from_domain(host);
     if (cc)
