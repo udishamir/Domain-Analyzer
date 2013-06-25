@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "libdoma.h"
 
-static inline int lookup_host (const char *host, struct flux_entry ** results)
+int get_flux(const char * host, struct flux_entry ** results)
 {
     struct addrinfo hints, *res, *cur;
     int errcode;
@@ -35,11 +35,11 @@ static inline int lookup_host (const char *host, struct flux_entry ** results)
     char * addr_str=NULL;
     void * addr_ptr;
     GeoIP * gi;
-
+    
     *results = NULL;
 
     memset (&hints, 0, sizeof (hints));
-    memset (&addr_str, 0, sizeof(addr_str));
+//    memset (&addr_str, 0, sizeof(addr_str));
 
     hints.ai_family = PF_UNSPEC;
     hints.ai_socktype = SOCK_STREAM;
@@ -62,12 +62,12 @@ static inline int lookup_host (const char *host, struct flux_entry ** results)
          */
         return -1;
     }
-    *results = malloc(sizeof **results * count);
+    *results = calloc(count, sizeof(struct flux_entry));
     if (!*results)
     {
         return -1;
     }
-    memset(*results, 0, sizeof **results * count);
+//   memset(*results, 0, sizeof(struct flux_entry) * count);
     // init GeoIP //
     gi = GeoIP_new(GEOIP_STANDARD);
     for (isflux = 0, cur = res; cur; cur = cur ->ai_next, ++isflux)
@@ -105,12 +105,25 @@ static inline int lookup_host (const char *host, struct flux_entry ** results)
         }
     }
 
+    (*results)[isflux].addr_str = NULL;
+    (*results)[isflux].cc[0] = 0;
+    (*results)[isflux].cc[1] = 0;
+
     GeoIP_delete(gi);
-    
-    return 0;
+
+    return isflux;
 }
 
-int get_flux(const char * dom, struct flux_entry ** results)
-{   
-    return lookup_host (dom, results);
+void release_flux(struct flux_entry * flux)
+{
+    if (NULL == flux)
+        return;
+
+    if (NULL != flux->addr_str)
+    {
+        free(flux->addr_str);
+        flux->addr_str = NULL;
+    }
+
+    free(flux);
 }

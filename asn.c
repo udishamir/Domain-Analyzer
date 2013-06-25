@@ -128,7 +128,7 @@ int check_whitelist(const char * _domain)
     
     memset(buffer, 0, sizeof(buffer));    
     while((fgets(buffer, sizeof(buffer), fp)) != NULL)
-    {    
+    { 
         if((ismatch=find_sets(buffer, _domain)) == 0)
         {
             fclose(fp);

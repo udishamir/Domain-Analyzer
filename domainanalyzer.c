@@ -12,7 +12,6 @@
 #include <netdb.h>
 #include <errno.h>
 
-#include "update.h"
 #include "common.h"
 #include "libdoma.h"
 

@@ -83,13 +83,13 @@ int find_sets(char *respond_body, char *pattern)
     int erroffset;
     int ovector[OVECCOUNT];
     int rc;
-    
+ 
     re = pcre_compile(pattern, 0, &error, &erroffset, NULL);
     if (!re)
     { 
         return -1;
     }
-    
+ 
     rc = pcre_exec(re, NULL, respond_body, strlen(respond_body), 0, 0, ovector, OVECCOUNT);
     pcre_free(re);
 

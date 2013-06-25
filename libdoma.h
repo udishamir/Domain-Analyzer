@@ -31,9 +31,9 @@ void release_flux(struct flux_entry * flux);
 int check_whitelist(IN const char * domain);
 int get_asn (IN const char * domain, OUT char **asn, OUT char **asn_details);  
 int check_asn (IN const char * asn_list);
-int read_from_url(IN const char * domain, IN struct httpbody * data, IN OPTIONAL FILE * fp);
 int check_home(IN const char * host, IN int verbose);
 char * get_cc_from_domain(IN const char * domain);
+int update(char* download_path);
 
 #define ASN_VERSION (asn_version())
 #define WHITELIST_VERSION (whitelist_version())

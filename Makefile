@@ -1,15 +1,18 @@
+
+
 CC=gcc
-CFLAGS=-c -Wall -fpic
-LDFLAGS=-shared -lc
-LIBS=-lcurl -lGeoIP -lpcre -lssl -lcrypto
-LIBDOMA=libdoma.so
-EXECUTABLE=domainanalyzer
-SOURCES=urlanalyzer-pcre.c asn.c chksum.c flux.c
+CFLAGS=-c -Wall -fpic -I/usr/include/python2.7/
+
+LDFLAGS=-shared -lc -L/usr/lib/
+LIBS=-lcurl -lGeoIP -lpcre -lssl -lcrypto -lpython2.7
+LIBDOMA=_libdoma.so
+SOURCES=urlanalyzer-pcre.c asn.c chksum.c flux.c update.c libdoma_wrap.c
 OBJECTS=$(SOURCES:.c=.o)
 
-E_LIBS=$(LIBDOMA) -lcurl
 E_LDFLAGS=
-E_SOURCES=domainanalyzer.c update.c
+E_LIBS=./_libdoma.so
+EXECUTABLE=domainanalyzer
+E_SOURCES=domainanalyzer.c
 E_OBJECTS=$(E_SOURCES:.c=.o)
 
 all: $(SOURCES) $(LIBDOMA) $(E_SOURCES) $(EXECUTABLE)
@@ -20,11 +23,14 @@ $(EXECUTABLE): $(E_OBJECTS) $(LIBDOMA)
 $(LIBDOMA): $(OBJECTS)
 	$(CC) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $@
 
+libdoma_wrap.c: 
+	swig -python -macroerrors -Wall -Werror libdoma.i
+
 .c.o: 
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm -f $(LIBDOMA) $(OBJECTS) $(EXECUTABLE) $(E_OBJECTS)
+	rm -f $(LIBDOMA) $(OBJECTS) $(EXECUTABLE) $(E_OBJECTS) libdoma_wrap.c libdoma.py
 
 
 

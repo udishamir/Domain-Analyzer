@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <curl/curl.h>
-//#include <curl/types.h>
 #include <curl/easy.h>
 #include <string.h>
-
-#include "update.h"
 
 const char update_url[] = "https://raw.github.com/udishamir/Domain-Analyzer/master/";
 
