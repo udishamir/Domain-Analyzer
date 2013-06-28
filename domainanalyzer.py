@@ -44,76 +44,13 @@ def analyze_domain(domain):
   return "Seems legit"
 
 def main():
+  if len(sys.argv) <= 1:
+    print("Usage: {name} <domain #1> ... <domain #N>".format(name=sys.argv[0]))
+    return
+
   libdoma.update('./')
   for domain in sys.argv[1:]:
     print("{domain}: {result}".format(domain=domain, result=analyze_domain(domain)))
   
 if __name__ == "__main__":
   main()
-
-#    restatus = get_asn(host, &asn_name, &asn_details);
-#    if(restatus < 0)
-#    {
-#        fprintf(stderr, "ASN resolver failed, status=%d\n", restatus);
-#    }
-#    else {
-#        printf("ASN=%s (%s)\n", asn_name, asn_details);
-#        free(asn_details);
-#        
-#        // verify black asn lists first //
-#        restatus = check_asn(asn_name);
-#        free(asn_name);
-#    }
-#
-#    if (restatus == 0)
-#    {
-#        printf("*** ASN %s in black list! ***\n", asn_name);
-#        return 0;
-#    }
-#    else if (restatus > 0)
-#    {
-#        printf("ASN not detected as black.\n");
-#    }
-#    else
-#    {
-#        fprintf(stderr, "Cannot determine ASN status.\n");
-#    }
-#
-#    int rc;
-#    struct flux_entry * flux;
-#    rc = get_flux(host, &flux);
-#    if (rc < 0)
-#    {
-#        fprintf(stderr, "Cannot retrieve fast flux information\n");
-#    }
-#    else
-#    {
-#        struct flux_entry * current = flux;
-#
-#        if (current->addr_str)
-#        {
-#            printf("Printing fast flux analysis for %s...\n", host);
-#        }
-#
-#        int count = 0;
-#        for (; current->addr_str; ++current, ++count)
-#        {
-#            printf("\t%s", current->addr_str);
-#            free(current->addr_str);
-#
-#            if (current->cc[0])
-#            {
-#                printf(" (%c%c)", current->cc[0], current->cc[1]);
-#            }
-#
-#            printf("\n");
-#        }
-#
-#        if (count > 1)
-#        {
-#            printf("%s is a suspected flux domain\n", host);
-#        }
-#        
-#        free(flux);
-#    }
-#}
