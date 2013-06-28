@@ -1,5 +1,3 @@
-
-
 CC=gcc
 CFLAGS=-c -Wall -fpic -I/usr/include/python2.7/
 
