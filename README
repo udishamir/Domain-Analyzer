@@ -115,6 +115,10 @@ requirments:
 
 1. libpcre (ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.30.tar.bz2)
 2. max mind geoip (http://www.maxmind.com/app/c)
+3. swig for python bindings (at the moment even if you don't need them, or just edit the simple Makefile)
+
+On Debian machines:
+sudo apt-get install swig libgeoip-dev libpcre3-dev libcurl4-openssl-dev
 
 Compile:
 
@@ -122,8 +126,8 @@ make
 
 Installation
 ------------
-1. copy libdoma.so to /usr/lib
-2. ldconfig
+1. run: sudo cp _libdoma.so /usr/lib/libdoma.so (notice the name change!)
+2. run: sudo ldconfig
 
 Windows
 -------
@@ -132,8 +136,8 @@ a 32-bit precompiled version is available.
 
 New Features Coming:
 
-1. Update fetaure that will fetch the latest ASN and Benign lists
-2. Python bindings, we are working hard to release python bindings 
+1. Update fetaure that will fetch the latest ASN and Benign lists - Done. use -u flag
+2. Python bindings, we are working hard to release python bindings - Done. see ./domainanalyzer.py
 3. Light web server allowing easy query for research labs
 
 Contact:
