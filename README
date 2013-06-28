@@ -117,6 +117,8 @@ requirments:
 2. max mind geoip (http://www.maxmind.com/app/c)
 3. swig for python bindings (at the moment even if you don't need them, or just edit the simple Makefile)
 
+for OSX, better use homebrew for installation
+
 On Debian machines:
 sudo apt-get install swig libgeoip-dev libpcre3-dev libcurl4-openssl-dev
 
@@ -142,7 +144,7 @@ New Features Coming:
 
 Contact:
 
-Udi Shamir, Assaf Segal, Nir Izraeli
+Udi Shamir, Nir Izraeli, Assaf Segal
 
-udi@binalyze.com, assafs@gmail.com, nirizr@gmail.com
-Binalyze Research Group (c) 2012
+udishamir@gmail.com, nirizr@gmail.com, assafs@gmail.com
+Binalzye Research Group (c) 2013
