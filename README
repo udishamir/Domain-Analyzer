@@ -131,13 +131,14 @@ Installation
 1. run: sudo cp _libdoma.so /usr/lib/libdoma.so (notice the name change!)
 2. run: sudo ldconfig
 3. uncompress wlist.gz: gzip -d wlist.gz
+4. mv wlist. wlist.conf
 
 good to go
 
 Windows
 -------
 a 32-bit precompiled version is available.
-
+this is an old version, ill port new one soon.
 
 New Features Coming:
 
