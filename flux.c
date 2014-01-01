@@ -74,14 +74,14 @@ int get_flux(const char * host, struct flux_entry ** results)
     {
         int size;
 
-        switch (res->ai_family)
+        switch (cur->ai_family)
         {
             case AF_INET:
-                addr_ptr = &((struct sockaddr_in *) res->ai_addr)->sin_addr;
+                addr_ptr = &((struct sockaddr_in *) cur->ai_addr)->sin_addr;
                 size = sizeof ("xxx.xxx.xxx.xxx");
                 break;
             case AF_INET6:
-                addr_ptr = &((struct sockaddr_in6 *) res->ai_addr)->sin6_addr;
+                addr_ptr = &((struct sockaddr_in6 *) cur->ai_addr)->sin6_addr;
                 size = sizeof ("xx:xx:xx:xx:xx:xx:xx:xx");
                 break;
             default:
@@ -90,7 +90,7 @@ int get_flux(const char * host, struct flux_entry ** results)
         addr_str = malloc(size);
         if (!addr_str) continue;
 
-        inet_ntop (res->ai_family, addr_ptr, addr_str, size);
+        inet_ntop (cur->ai_family, addr_ptr, addr_str, size);
         (*results)[isflux].addr_str = addr_str;
 
         if((GeoIP_country_code_by_name(gi, addr_str)) == NULL)
